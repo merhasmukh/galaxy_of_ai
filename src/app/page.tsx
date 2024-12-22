@@ -1,101 +1,92 @@
-import Image from "next/image";
 
+import HomePage from "./(pages)/home/page";
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  metadataBase: new URL('https://galaxyofai.com'),
+  title: {
+    default: 'Galaxy of AI | Artificial Intelligence & Machine Learning Resources',
+    template: '%s | Galaxy of AI'
+  },
+  description: 'Explore the universe of Artificial Intelligence and Machine Learning with comprehensive guides, tutorials, and insights. Learn about the latest AI trends and technologies.',
+  keywords: [
+    'artificial intelligence',
+    'machine learning',
+    'AI tutorials',
+    'ML resources',
+    'deep learning',
+    'AI research',
+    'data science',
+    'neural networks',
+    'AI technology',
+    'machine learning tutorials',
+    'AI blog',
+    'tech education',
+    'AI insights',
+    'future technology',
+    'AI development'
+  ],
+  authors: [
+    {
+      name: 'Galaxy of AI',
+      url: 'https://galaxyofai.com',
+    }
+  ],
+  creator: 'Galaxy of AI',
+  publisher: 'Galaxy of AI',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  openGraph: {
+    title: 'Galaxy of AI | AI & ML Resources',
+    description: 'Your gateway to understanding Artificial Intelligence and Machine Learning. Expert insights, tutorials, and resources.',
+    url: 'https://galaxyofai.com',
+    siteName: 'Galaxy of AI',
+    images: [
+      {
+        url: '/galaxy-of-ai-logo.png', // Make sure to add this image to your public folder
+        width: 1200,
+        height: 630,
+        alt: 'Galaxy of AI - Exploring the Universe of Artificial Intelligence',
+      }
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  manifest: '/manifest.json',
+  icons: {
+    icon: '/galaxy-of-ai-logo.png',
+    shortcut: '/galaxy-of-ai-logo.png',
+    apple: '/galaxy-of-ai-logo.png',
+    other: [
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        url: '/galaxy-of-ai-logo.png',
+      },
+    ],
+  },
+  alternates: {
+    canonical: 'https://galaxyofai.com',
+    languages: {
+      'en-US': 'https://galaxyofai.com',
+    },
+  },
+}
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+  return <HomePage />
 }
