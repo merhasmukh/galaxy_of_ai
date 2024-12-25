@@ -4,18 +4,9 @@ import { motion } from 'framer-motion';
 import {
   Brain,
   Code,
-  Bot,
-  Terminal,
-  Database,
-  Network,
   Cpu,
-  Settings,
   Book,
-  GitBranch,
   Server,
-  LineChart,
-  Layers,
-  MessageSquare
 } from 'lucide-react';
 
 export default function GenAIRoadmap() {

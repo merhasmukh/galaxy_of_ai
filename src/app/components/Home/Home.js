@@ -1,10 +1,7 @@
 'use client';
 
-import { Globe, Brain, Sparkles, ChevronRight, ExternalLink, Menu } from 'lucide-react';
-import { useState } from 'react';
-import Link from 'next/link';
+import { Globe, Brain, Sparkles, ChevronRight, ExternalLink } from 'lucide-react';
 export default function Home() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0F172A] to-[#1E293B]-950">

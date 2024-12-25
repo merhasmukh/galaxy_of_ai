@@ -2,8 +2,8 @@ import {
       Bars3Icon,
     XMarkIcon,
   } from '@heroicons/react/24/outline'
-import { ChevronDownIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
-
+import { ChevronDownIcon } from '@heroicons/react/20/solid'
+import Link from 'next/link'
 import Image from 'next/image'
 import {
     Dialog,
@@ -43,7 +43,7 @@ const Header = () => {
         <header className="bg-gradient-to-br from-[#0F172A] to-[#1E293B]-950 text-white mx-auto items-center justify-center ">
         <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
         <div className="flex lg:flex-1">
-          <a href="/" className="-m-1.5 p-1.5">
+          <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Galaxy Of AI</span>
             <Image
               alt="Galaxy Of AI Logo"
@@ -52,7 +52,8 @@ const Header = () => {
               width={32} // Set appropriate width
               height={32} // Set appropriate height
             />
-          </a>
+            </Link>
+          
         </div>
           <div className="flex lg:hidden">
             <button
@@ -65,9 +66,9 @@ const Header = () => {
             </button>
           </div>
           <PopoverGroup className="hidden lg:flex lg:gap-x-12 items-center justify-center">
-            <a href="/" className="text-sm/6 font-semibold text-white-900">
+            <Link href="/" className="text-sm/6 font-semibold text-white-900">
               Home
-            </a>
+            </Link>
             <Popover className="relative">
               <PopoverButton className="flex items-center gap-x-1 text-sm/6 font-semibold text-white-900">
                 Roadmaps
@@ -85,7 +86,7 @@ const Header = () => {
                       className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm/6 hover:bg-gray-800"
                     >
                       <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                        <img src={item.icon} alt={`${item.name} icon`} className="h-6 w-6" />
+                        <Image src={item.icon} alt={`${item.name} icon`} className="h-6 w-6" />
 
                         {/* <item.icon aria-hidden="true" className="size-6 text-gray-600 group-hover:text-indigo-600" /> */}
                       </div>
@@ -114,12 +115,12 @@ const Header = () => {
             <a href="/experience" className="text-sm/6 font-semibold text-white-900">
               Experience
             </a> */}
-            <a href="https://blog.galaxyofai.com" className="text-sm/6 font-semibold text-white-900">
+            <Link href="https://blog.galaxyofai.com" className="text-sm/6 font-semibold text-white-900">
               Blog
-            </a>
-            <a href="/about" className="text-sm/6 font-semibold text-white-900">
+            </Link>
+            <Link href="/about" className="text-sm/6 font-semibold text-white-900">
               About
-            </a>
+            </Link>
            
             {/* <a href="#" className="text-sm/6 font-semibold text-gray-900">
               Company
@@ -135,14 +136,14 @@ const Header = () => {
           <div className="fixed inset-0 z-10" />
           <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-gradient-to-br from-[#0F172A] to-[#1E293B] px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
             <div className="flex items-center justify-between">
-              <a href="#" className="-m-1.5 p-1.5">
+              <Link href="#" className="-m-1.5 p-1.5">
                 <span className="sr-only">Galaxy Of AI</span>
-                <img
+                <Image
                   alt=""
                   src="/galaxy-of-ai-logo.png"
                   className="h-8 w-auto"
                 />
-              </a>
+              </Link>
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(false)}
@@ -155,12 +156,12 @@ const Header = () => {
             <div className="mt-6 flow-root">
               <div className="-my-6 divide-y divide-gray-500/10">
                 <div className="space-y-2 py-6 bg-gray">
-                    <a
+                    <Link
                       href="/"
                       className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white-900 hover:bg-gray-50"
                     >
                       Home
-                    </a>
+                    </Link>
                   <Disclosure as="div" className="-mx-3">
                     
                     <DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base/7 font-semibold text-white-900 hover:bg-white-50">
@@ -200,18 +201,18 @@ const Header = () => {
                   >
                     Experience
                   </a> */}
-                  <a
+                  <Link
                     href="https://blog.galaxyofai.com"
                     className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white-900 hover:bg-white-50"
                   >
                     Blog
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href="/about"
                     className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white-900 hover:bg-white-50"
                   >
                     About
-                  </a>
+                  </Link>
                   {/* <a
                     href="#"
                     className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"

@@ -4,17 +4,10 @@ import { motion } from 'framer-motion';
 import {
   CheckCircle2,
   Circle,
-  BookOpen,
   Code,
   Brain,
-  Users,
   Briefcase,
-  Star,
-  Trophy,
-  GitBranch,
-  Database,
-  LineChart,
-  MessageSquare
+
 } from 'lucide-react';
 
 export default function AiMlRoadmap() {

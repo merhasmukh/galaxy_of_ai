@@ -5,15 +5,8 @@ import { useRouter } from 'next/navigation';
 import {
   Brain,
   Code,
-  Briefcase,
-  LineChart,
-  BookOpen,
-  Bot,
-  Database,
   Network,
-  Terminal,
   Cpu,
-  Globe,
   Server
 } from 'lucide-react';
 

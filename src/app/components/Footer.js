@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { SocialIcon } from 'react-social-icons/component'
 import 'react-social-icons/github'
 import 'react-social-icons/linkedin'
 const Footer = () => {

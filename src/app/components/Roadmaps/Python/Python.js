@@ -4,18 +4,8 @@ import { motion } from 'framer-motion';
 import {
   Code,
   Database,
-  Binary,
-  Calculator,  // Replaced Functions
-  ArrowRight,
-  BookOpen,
-  Grid,
-  Box,
-  LineChart,
   Brain,
-  GitBranch,
   Cpu,
-  Library,  // Added for scientific computing
-  FlaskConical,  // Added for experiments,
 } from 'lucide-react';
 
 export default function PythonAIRoadmap() {
