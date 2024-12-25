@@ -20,10 +20,9 @@ import {
 import { useState } from 'react'
 
   const projects = [
-    { name: 'Python Roadmap', description: "Python Roadmap For AI, ML, DL ,GenAI,LLM Developer", href: '/roadmaps/python',     icon: '/tech/svg/Python.svg', // Note: no `import` needed
-    },
-    // { name: 'Engagement', description: 'Speak directly to your customers', href: '#', icon: CursorArrowRaysIcon },
-    // { name: 'Security', description: 'Your customers’ data will be safe and secure', href: '#', icon: FingerPrintIcon },
+    { name: 'Python Roadmap', description: "Python Roadmap For AI, ML, DL ,GenAI,LLM Developer", href: '/roadmaps/python-developer',     icon: '/tech/svg/Python.svg' },
+    { name: 'GenAI | LLM Roadmap', description: 'GenAI And LLM Roadmap For Developer', href: '/roadmaps/genai-llm-developer', icon: '/tech/svg/Brain.svg' },
+    { name: 'AI | ML Roadmap', description: 'AI/ML Roadmap For Developer', href: '/roadmaps/ai-ml-developer', icon: '/globe.svg' },
     // { name: 'Integrations', description: 'Connect with third-party tools', href: '#', icon: SquaresPlusIcon },
     // { name: 'Automations', description: 'Build strategic funnels that will convert', href: '#', icon: ArrowPathIcon },
   ]
@@ -85,8 +84,8 @@ const Header = () => {
                       key={item.name}
                       className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm/6 hover:bg-gray-800"
                     >
-                      <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                        <Image src={item.icon} alt={`${item.name} icon`} className="h-6 w-6" />
+                      <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray group-hover:bg-white">
+                        <Image src={item.icon} alt={`${item.name} icon`} height={60} width={60} />
 
                         {/* <item.icon aria-hidden="true" className="size-6 text-gray-600 group-hover:text-indigo-600" /> */}
                       </div>
@@ -142,6 +141,8 @@ const Header = () => {
                   alt=""
                   src="/galaxy-of-ai-logo.png"
                   className="h-8 w-auto"
+                  width={32}
+                  height={32}
                 />
               </Link>
               <button
@@ -158,7 +159,7 @@ const Header = () => {
                 <div className="space-y-2 py-6 bg-gray">
                     <Link
                       href="/"
-                      className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white-900 hover:bg-gray-50"
+                      className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white-900 hover:bg-white-50"
                     >
                       Home
                     </Link>

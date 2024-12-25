@@ -1,11 +1,38 @@
 'use client';
 
-import { Globe, Brain, Sparkles, ChevronRight, ExternalLink } from 'lucide-react';
+import { Globe, Brain, Sparkles, ChevronRight, ExternalLink, Code, Activity } from 'lucide-react';
+import Link from 'next/link';
 export default function Home() {
-
+  const blogs = [
+    {
+      title: "Understanding Vector Embeddings in AI",
+      description: "Learn how vector embeddings are used to represent data in AI systems, including their applications in NLP and beyond.",
+      link: "https://blog.galaxyofai.com/everything-about-vector-embeddings/",
+      image: "https://blog.galaxyofai.com/wp-content/uploads/2024/08/Everything-About-Vector-Embeddings.png", // Replace with actual image URL
+    },
+    {
+      title: "Introduction: Improving Accuracy of LLM Applications",
+      description: "Introduction: Improving Accuracy of LLM Applications, we give overview of the how we can improve accuracy of LLM applications.",
+      link: "https://blog.galaxyofai.com/introduction-improving-accuracy-of-llm-applications/",
+      image: "https://blog.galaxyofai.com/wp-content/uploads/2024/08/Introduction-Improving-Accuracy-of-LLM-Applications.png", // Replace with actual image URL
+    },
+    // {
+    //   title: "Getting Started with Generative AI",
+    //   description: "A beginner's guide to generative AI, including GANs, transformers, and diffusion models.",
+    //   link: "https://blog.galaxyofai.com/getting-started-with-generative-ai/",
+    //   image: "https://via.placeholder.com/600x300?text=Generative+AI", // Replace with actual image URL
+    // },
+    // {
+    //   title: "AI Ethics: Balancing Innovation and Responsibility",
+    //   description: "Discover the ethical challenges in AI development and strategies for responsible innovation.",
+    //   link: "https://blog.galaxyofai.com/ai-ethics-and-responsibility/",
+    //   image: "https://via.placeholder.com/600x300?text=AI+Ethics", // Replace with actual image URL
+    // },
+  ];
+  
+  
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0F172A] to-[#1E293B]-950">
-  
       {/* Hero Section */}
       <header className="container mx-auto px-4 pt-32 pb-16 md:pt-40 md:pb-24">
         <div className="flex flex-col items-center text-center">
@@ -19,20 +46,63 @@ export default function Home() {
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto px-4">
-            <a href="#explore" 
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full flex items-center justify-center gap-2">
-              Explore Now <ChevronRight className="w-5 h-5" />
+            <a
+              href="/roadmaps"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full flex items-center justify-center gap-2"
+            >
+              Explore Roadmaps <ChevronRight className="w-5 h-5" />
             </a>
-            <a href="https://blog.galaxyofai.com" 
-              className="border border-blue-600 text-blue-400 hover:bg-blue-900/20 px-6 py-3 rounded-full flex items-center justify-center gap-2">
+            <a
+              href="https://blog.galaxyofai.com"
+              className="border border-blue-600 text-blue-400 hover:bg-blue-900/20 px-6 py-3 rounded-full flex items-center justify-center gap-2"
+            >
               Visit Blog <ExternalLink className="w-5 h-5" />
             </a>
           </div>
         </div>
       </header>
 
+      {/* Roadmaps Section */}
+      <section id="roadmaps" className="container mx-auto px-4 py-16">
+        <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 text-center">Developer Roadmaps</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <a
+            href="/roadmaps/python-developer"
+            className="bg-white/5 p-6 rounded-xl backdrop-blur-sm transform hover:scale-105 transition-transform"
+          >
+            <Code className="w-12 h-12 text-blue-400 mb-4" />
+            <h3 className="text-xl font-semibold text-white mb-3">Python Developer</h3>
+            <p className="text-gray-400">
+              Follow a comprehensive roadmap to master Python development skills.
+            </p>
+          </a>
+          <a
+            href="/roadmaps/genai-llm-developer"
+            className="bg-white/5 p-6 rounded-xl backdrop-blur-sm transform hover:scale-105 transition-transform"
+          >
+            <Brain className="w-12 h-12 text-purple-400 mb-4" />
+            <h3 className="text-xl font-semibold text-white mb-3">GenAI & LLM Developer</h3>
+            <p className="text-gray-400">
+              Learn how to build and deploy generative AI and large language model applications.
+            </p>
+          </a>
+          <a
+            href="/roadmaps/ai-ml-developer"
+            className="bg-white/5 p-6 rounded-xl backdrop-blur-sm transform hover:scale-105 transition-transform"
+          >
+            <Activity className="w-12 h-12 text-pink-400 mb-4" />
+            <h3 className="text-xl font-semibold text-white mb-3">AI/ML Developer</h3>
+            <p className="text-gray-400">
+              Dive into machine learning algorithms and AI applications with a step-by-step roadmap.
+            </p>
+          </a>
+        </div>
+      </section>
+
       {/* Features Section */}
       <section id="features" className="container mx-auto px-4 py-16">
+      <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 text-center">Features</h2>
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="bg-white/5 p-6 rounded-xl backdrop-blur-sm transform hover:scale-105 transition-transform">
             <Globe className="w-12 h-12 text-blue-400 mb-4" />
@@ -60,21 +130,30 @@ export default function Home() {
 
       {/* Latest Posts Preview */}
       <section id="blog" className="container mx-auto px-4 py-16">
-        <h2 className="text-2xl md:text-3xl font-bold text-white mb-8">Latest from the Blog</h2>
+        <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 text-center">Latest from the Blog</h2>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {[1, 2].map((_, i) => (
-            <div key={i} className="bg-white/5 rounded-xl overflow-hidden hover:bg-white/10 transition-colors">
-              <div className="h-48 bg-gradient-to-r from-blue-500/20 to-purple-500/20" />
+          {blogs.map((blog, index) => (
+            <div
+              key={index}
+              className="bg-white/5 rounded-xl overflow-hidden hover:bg-white/10 transition-colors"
+            >
+              {/* Thumbnail Image */}
+              <div
+                className="h-48 bg-cover bg-center"
+                style={{ backgroundImage: `url(${blog.image})` }}
+              />
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-white mb-2">
-                  Featured AI Article Title
-                </h3>
-                <p className="text-gray-400 mb-4">
-                  Preview of the article content goes here. This showcases the latest insights...
-                </p>
-                <a href="#" className="text-blue-400 hover:text-blue-300 flex items-center gap-2">
+                <h3 className="text-xl font-semibold text-white mb-2">{blog.title}</h3>
+                <p className="text-gray-400 mb-4">{blog.description}</p>
+                <Link
+                  href={blog.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-400 hover:text-blue-300 flex items-center gap-2"
+                >
                   Read More <ChevronRight className="w-4 h-4" />
-                </a>
+                </Link>
               </div>
             </div>
           ))}
@@ -89,8 +168,8 @@ export default function Home() {
             Subscribe to our newsletter for the latest AI insights and updates delivered straight to your inbox.
           </p>
           <div className="flex flex-col sm:flex-row max-w-md mx-auto gap-4 px-4">
-            <input 
-              type="email" 
+            <input
+              type="email"
               placeholder="Enter your email"
               className="flex-1 bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
