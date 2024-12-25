@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     siteName: 'Galaxy of AI',
     images: [
       {
-        url: '/galaxy-of-ai-logo.png', // Make sure to add this image to your public folder
+        url: '/favicon.ico', // Make sure to add this image to your public folder
         width: 1200,
         height: 630,
         alt: 'Galaxy of AI - Exploring the Universe of Artificial Intelligence',
@@ -68,15 +68,15 @@ export const metadata: Metadata = {
   },
   manifest: '/manifest.json',
   icons: {
-    icon: '/galaxy-of-ai-logo.png',
-    shortcut: '/galaxy-of-ai-logo.png',
-    apple: '/galaxy-of-ai-logo.png',
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
     other: [
       {
         rel: 'icon',
         type: 'image/png',
         sizes: '32x32',
-        url: '/galaxy-of-ai-logo.png',
+        url: '/favicon.ico',
       },
     ],
   },
