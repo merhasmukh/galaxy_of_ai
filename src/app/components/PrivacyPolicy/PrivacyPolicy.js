@@ -47,7 +47,7 @@ For users that register on our website (if any), we also store the personal info
   ];
 
   return (
-    <div className="bg-gradient-to-br from-[#0F172A] to-[#1E293B] min-h-screen py-16">
+    <div className="bg-gradient-to-br from-[#0F172A] to-[#1E293B] min-h-screen py-16 text-white">
       <div className="container mx-auto px-6">
         <div className="bg-white-50 shadow-lg rounded-lg p-8 mb-12 border border-white-100">
           <h3 className="text-2xl font-semibold mb-4 flex items-center text-white-900">

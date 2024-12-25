@@ -38,7 +38,7 @@ const About = () => {
   `;
 
   return (
-    <div className="bg-gradient-to-br from-[#0F172A] to-[#1E293B] min-h-screen py-16">
+    <div className="bg-gradient-to-br from-[#0F172A] to-[#1E293B] min-h-screen py-16 text-white">
       <div className="container mx-auto px-6">
         
         {/* Professional Summary */}

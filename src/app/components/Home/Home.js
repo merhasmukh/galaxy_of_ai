@@ -32,7 +32,7 @@ export default function Home() {
   
   
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0F172A] to-[#1E293B]-950">
+    <div className="min-h-screen bg-gradient-to-br from-[#0F172A] to-[#1E293B] text-white">
       {/* Hero Section */}
       <header className="container mx-auto px-4 pt-32 pb-16 md:pt-40 md:pb-24">
         <div className="flex flex-col items-center text-center">
