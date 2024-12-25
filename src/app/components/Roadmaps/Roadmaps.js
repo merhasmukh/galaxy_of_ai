@@ -31,7 +31,7 @@ export default function RoadmapHub() {
       color: "from-yellow-500 to-red-500",
       description: "Advanced Python programming and best practices",
       topics: ["Data Structures", "Algorithms", "System Design", "Testing"],
-      path: "/roadmaps/python"
+      path: "/roadmaps/python-developer"
     },
     {
       id: "genai",
@@ -40,7 +40,7 @@ export default function RoadmapHub() {
       color: "from-purple-500 to-pink-500",
       description: "Master Generative AI and Large Language Models",
       topics: ["Transformers", "LLM Fine-tuning", "RAG Systems", "Prompt Engineering"],
-      path: "/roadmaps/genai"
+      path: "/roadmaps/genai-llm-developer"
     },
     {
       id: "mlai",
@@ -49,7 +49,7 @@ export default function RoadmapHub() {
       color: "from-green-500 to-blue-500",
       description: "Comprehensive machine learning development path",
       topics: ["Deep Learning", "Neural Networks", "Computer Vision", "Model Deployment"],
-      path: "/roadmaps/mlai"
+      path: "/roadmaps/ai-ml-developer"
     },
     
     {
@@ -59,7 +59,7 @@ export default function RoadmapHub() {
       color: "from-blue-500 to-green-500",
       description: "Backend development and API design",
       topics: ["API Development", "Databases", "System Architecture", "Security"],
-      path: "/roadmaps/backend"
+      path: "/roadmaps/backend-developer"
     },
     {
       id: "mlops",

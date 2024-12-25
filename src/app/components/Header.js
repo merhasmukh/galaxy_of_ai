@@ -159,6 +159,7 @@ const Header = () => {
                 <div className="space-y-2 py-6 bg-gray">
                     <Link
                       href="/"
+                      onClick={() => setMobileMenuOpen(false)}
                       className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white-900 hover:bg-white-50"
                     >
                       Home
@@ -175,6 +176,7 @@ const Header = () => {
                           key={item.name}
                           as="a"
                           href={item.href}
+                          onClick={() => setMobileMenuOpen(false)}
                           className="block rounded-lg py-2 pl-6 pr-3 text-sm/7 font-semibold text-white-900 hover:bg-white-50"
                         >
                           {item.name}
@@ -204,12 +206,14 @@ const Header = () => {
                   </a> */}
                   <Link
                     href="https://blog.galaxyofai.com"
+                    onClick={() => setMobileMenuOpen(false)}
                     className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white-900 hover:bg-white-50"
                   >
                     Blog
                   </Link>
                   <Link
                     href="/about"
+                    onClick={() => setMobileMenuOpen(false)}
                     className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white-900 hover:bg-white-50"
                   >
                     About
