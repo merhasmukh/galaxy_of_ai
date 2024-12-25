@@ -1,7 +1,6 @@
 
 import "./globals.css";
 
-import Head from "next/head";
 import Script from "next/script";
 
 export default function RootLayout({
@@ -11,8 +10,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Head>
-        <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1479377630872521"/>
+      <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1479377630872521"/>
          <Script id="google-analytics" strategy="afterInteractive">
             {`
               window.dataLayer = window.dataLayer || [];
@@ -21,7 +19,7 @@ export default function RootLayout({
               gtag('config', 'G-84FYVM6X8L');
             `}
           </Script>
-        </Head>
+     
       <body>
         {children}
       </body>
