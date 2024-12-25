@@ -34,25 +34,6 @@ export default function RoadmapHub() {
       path: "/roadmaps/python-developer"
     },
     {
-      id: "genai",
-      title: "Generative AI & LLMs",
-      icon: Brain,
-      color: "from-purple-500 to-pink-500",
-      description: "Master Generative AI and Large Language Models",
-      topics: ["Transformers", "LLM Fine-tuning", "RAG Systems", "Prompt Engineering"],
-      path: "/roadmaps/genai-llm-developer"
-    },
-    {
-      id: "mlai",
-      title: "Machine Learning",
-      icon: Cpu,
-      color: "from-green-500 to-blue-500",
-      description: "Comprehensive machine learning development path",
-      topics: ["Deep Learning", "Neural Networks", "Computer Vision", "Model Deployment"],
-      path: "/roadmaps/ai-ml-developer"
-    },
-    
-    {
       id: "backend",
       title: "Backend Development",
       icon: Server,
@@ -62,6 +43,15 @@ export default function RoadmapHub() {
       path: "/roadmaps/backend-developer"
     },
     {
+      id: "aiml",
+      title: "Artificial Intelligence And Machine Learning",
+      icon: Cpu,
+      color: "from-green-500 to-blue-500",
+      description: "Comprehensive machine learning development path",
+      topics: ["Deep Learning", "Neural Networks", "Computer Vision", "Model Deployment"],
+      path: "/roadmaps/ai-ml-developer"
+    },
+    {
       id: "mlops",
       title: "MLOps",
       icon: Network,
@@ -69,6 +59,24 @@ export default function RoadmapHub() {
       description: "Machine Learning Operations and deployment",
       topics: ["CI/CD for ML", "Model Monitoring", "Scale ML Systems", "DevOps"],
       path: "/roadmaps/mlops-developer"
+    },
+    {
+      id: "genai",
+      title: "Generative AI & LLMs",
+      icon: Brain,
+      color: "from-purple-500 to-pink-500",
+      description: "Master Generative AI and Large Language Models",
+      topics: ["Transformers", "LLM Fine-tuning", "RAG Systems", "Prompt Engineering"],
+      path: "/roadmaps/genai-llm-developer"
+    },
+    {
+      "id": "agentic_ai",
+      "title": "Agentic AI",
+      "icon": Cpu,
+      "color": "from-blue-500 to-green-500",
+      "description": "Autonomous agents and multi-agent systems",
+      "topics": ["Agent-based Modeling", "Reinforcement Learning", "Multi-agent Systems", "Autonomy & Decision-making"],
+      "path": "/roadmaps/agentic-ai-developer"
     }
   ];
 
