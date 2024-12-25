@@ -68,7 +68,7 @@ export default function RoadmapHub() {
       color: "from-red-500 to-purple-500",
       description: "Machine Learning Operations and deployment",
       topics: ["CI/CD for ML", "Model Monitoring", "Scale ML Systems", "DevOps"],
-      path: "/roadmaps/mlops"
+      path: "/roadmaps/mlops-developer"
     }
   ];
 
