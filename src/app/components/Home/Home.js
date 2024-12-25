@@ -7,52 +7,8 @@ export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-purple-950">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 bg-black/50 backdrop-blur-sm z-50">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16">
-          <Link href="/" className="text-xl font-bold text-white">
-            Galaxy of AI
-            </Link>
-            
-            {/* Mobile Menu Button */}
-            <button 
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden text-white p-2"
-            >
-              <Menu className="w-6 h-6" />
-            </button>
-
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-6">
-              <a href="#features" className="text-gray-300 hover:text-white">Features</a>
-              <a href="#blog" className="text-gray-300 hover:text-white">Blog</a>
-              <a href="#contact" className="text-gray-300 hover:text-white">Contact</a>
-              <a href="https://blog.galaxyofai.com" 
-                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full">
-                Visit Blog
-              </a>
-            </div>
-          </div>
-
-          {/* Mobile Menu */}
-          {isMenuOpen && (
-            <div className="md:hidden bg-black/95 p-4 absolute top-16 left-0 right-0">
-              <div className="flex flex-col gap-4">
-                <a href="#features" className="text-gray-300 hover:text-white">Features</a>
-                <a href="#blog" className="text-gray-300 hover:text-white">Blog</a>
-                <a href="#contact" className="text-gray-300 hover:text-white">Contact</a>
-                <a href="https://blog.galaxyofai.com" 
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full text-center">
-                  Visit Blog
-                </a>
-              </div>
-            </div>
-          )}
-        </div>
-      </nav>
-
+    <div className="min-h-screen bg-gradient-to-br from-[#0F172A] to-[#1E293B]-950">
+  
       {/* Hero Section */}
       <header className="container mx-auto px-4 pt-32 pb-16 md:pt-40 md:pb-24">
         <div className="flex flex-col items-center text-center">

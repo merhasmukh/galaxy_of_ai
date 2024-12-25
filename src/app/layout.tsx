@@ -1,8 +1,10 @@
 
+"use client"
 import "./globals.css";
 
 import Script from "next/script";
-
+import Header from "./components/Header.js"
+import Footer from "./components/Footer.js"
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -24,7 +26,11 @@ export default function RootLayout({
          
      
       <body>
-        {children}
+        <Header />
+          
+          {children}
+      <Footer />
+       
       </body>
     </html>
   );
