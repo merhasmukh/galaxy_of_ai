@@ -35,7 +35,7 @@ export default function TokenCounter() {
     <div className="min-h-screen bg-gradient-to-br from-[#0F172A] to-[#1E293B] p-4 md:p-8 text-white">
       <div className="max-w-3xl mx-auto">
         <h1 className="text-3xl md:text-4xl font-bold text-center mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
-          Token Counter & Price Calculator
+          LLM Token Counter & Price Calculator
         </h1>
 
         {/* Input Section */}

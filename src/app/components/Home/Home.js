@@ -1,41 +1,7 @@
-'use client';
 
 import { Globe, Brain, Sparkles, ChevronRight, ExternalLink, Code, Activity } from 'lucide-react';
-import Link from 'next/link';
 export default function Home() {
-  const blogs = [
-    {
-      title: "Agentic AI Developer vs Agentic AI Engineer: Key Differences and Roles",
-      description: "Discover the key differences between an Agentic AI Developer and an Engineer. Explore their roles, skills, and responsibilities to choose the right career path in AI.",
-      link: "/blog/comparison-agentic-ai",
-      image: "/blog/agentic-ai-comparison.png", // Replace with actual image URL
-    },
-    {
-      title: "Understanding Vector Embeddings in AI",
-      description: "Learn how vector embeddings are used to represent data in AI systems, including their applications in NLP and beyond.",
-      link: "https://blog.galaxyofai.com/everything-about-vector-embeddings/",
-      image: "https://blog.galaxyofai.com/wp-content/uploads/2024/08/Everything-About-Vector-Embeddings.png", // Replace with actual image URL
-    },
-    {
-      title: "Introduction: Improving Accuracy of LLM Applications",
-      description: "Introduction: Improving Accuracy of LLM Applications, we give overview of the how we can improve accuracy of LLM applications.",
-      link: "https://blog.galaxyofai.com/introduction-improving-accuracy-of-llm-applications/",
-      image: "https://blog.galaxyofai.com/wp-content/uploads/2024/08/Introduction-Improving-Accuracy-of-LLM-Applications.png", // Replace with actual image URL
-    },
-    // {
-    //   title: "Getting Started with Generative AI",
-    //   description: "A beginner's guide to generative AI, including GANs, transformers, and diffusion models.",
-    //   link: "https://blog.galaxyofai.com/getting-started-with-generative-ai/",
-    //   image: "https://via.placeholder.com/600x300?text=Generative+AI", // Replace with actual image URL
-    // },
-    // {
-    //   title: "AI Ethics: Balancing Innovation and Responsibility",
-    //   description: "Discover the ethical challenges in AI development and strategies for responsible innovation.",
-    //   link: "https://blog.galaxyofai.com/ai-ethics-and-responsibility/",
-    //   image: "https://via.placeholder.com/600x300?text=AI+Ethics", // Replace with actual image URL
-    // },
-  ];
-  
+ 
   
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0F172A] to-[#1E293B] text-white">
@@ -47,8 +13,11 @@ export default function Home() {
               Galaxy of AI
             </h1>
             <p className="text-lg md:text-xl text-gray-300 max-w-2xl mb-8 px-4">
-              Exploring the infinite possibilities of Artificial Intelligence and Machine Learning. 
-              Join us on a journey through the digital cosmos.
+            Your Gateway to Generative AI, LLMs, and Python Programming. 
+            <p>
+            Join us on a journey of Generative AI and LLMs.
+
+            </p>
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto px-4">
@@ -134,40 +103,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Latest Posts Preview */}
-      <section id="blog" className="container mx-auto px-4 py-16">
-        <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 text-center">Latest from the Blog</h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {blogs.map((blog, index) => (
-            <div
-              key={index}
-              className="bg-white/5 rounded-xl overflow-hidden hover:bg-white/10 transition-colors"
-            >
-              {/* Thumbnail Image */}
-              <div
-                className="h-48 bg-cover bg-center"
-                style={{ backgroundImage: `url(${blog.image})` }}
-              />
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-white mb-2">{blog.title}</h3>
-                <p className="text-gray-400 mb-4">{blog.description}</p>
-                <Link
-                  href={blog.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-400 hover:text-blue-300 flex items-center gap-2"
-                >
-                  Read More <ChevronRight className="w-4 h-4" />
-                </Link>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+     
 
       {/* Newsletter Section */}
-      <section id="contact" className="container mx-auto px-4 py-16">
+      {/* <section id="contact" className="container mx-auto px-4 py-16">
         <div className="bg-gradient-to-r from-blue-900/50 to-purple-900/50 rounded-2xl p-6 md:p-8 text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Stay Updated</h2>
           <p className="text-gray-300 mb-6 max-w-xl mx-auto px-4">
@@ -184,7 +123,7 @@ export default function Home() {
             </button>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }
