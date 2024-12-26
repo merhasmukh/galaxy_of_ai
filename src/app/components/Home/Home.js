@@ -5,6 +5,12 @@ import Link from 'next/link';
 export default function Home() {
   const blogs = [
     {
+      title: "Agentic AI Developer vs Agentic AI Engineer: Key Differences and Roles",
+      description: "Discover the key differences between an Agentic AI Developer and an Engineer. Explore their roles, skills, and responsibilities to choose the right career path in AI.",
+      link: "/blog/comparison-agentic-ai",
+      image: "/blog/agentic-ai-comparison.png", // Replace with actual image URL
+    },
+    {
       title: "Understanding Vector Embeddings in AI",
       description: "Learn how vector embeddings are used to represent data in AI systems, including their applications in NLP and beyond.",
       link: "https://blog.galaxyofai.com/everything-about-vector-embeddings/",

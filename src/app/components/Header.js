@@ -46,7 +46,7 @@ const Header = () => {
             <span className="sr-only">Galaxy Of AI</span>
             <Image
               alt="Galaxy Of AI Logo"
-              src="/galaxy-of-ai-logo.png"
+              src="/favicon.ico"
               className="h-8 w-auto"
               width={32} // Set appropriate width
               height={32} // Set appropriate height
@@ -114,7 +114,7 @@ const Header = () => {
             <a href="/experience" className="text-sm/6 font-semibold text-white-900">
               Experience
             </a> */}
-            <Link href="https://blog.galaxyofai.com" className="text-sm/6 font-semibold text-white-900">
+            <Link href="/blog" className="text-sm/6 font-semibold text-white-900">
               Blog
             </Link>
             <Link href="/about" className="text-sm/6 font-semibold text-white-900">
@@ -139,7 +139,7 @@ const Header = () => {
                 <span className="sr-only">Galaxy Of AI</span>
                 <Image
                   alt=""
-                  src="/galaxy-of-ai-logo.png"
+                  src="/favicon.ico"
                   className="h-8 w-auto"
                   width={32}
                   height={32}
@@ -205,7 +205,7 @@ const Header = () => {
                     Experience
                   </a> */}
                   <Link
-                    href="https://blog.galaxyofai.com"
+                    href="/blog"
                     onClick={() => setMobileMenuOpen(false)}
                     className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white-900 hover:bg-white-50"
                   >

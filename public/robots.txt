@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://galaxyofai.com
+
+# Sitemaps
+Sitemap: https://galaxyofai.com/sitemap.xml
