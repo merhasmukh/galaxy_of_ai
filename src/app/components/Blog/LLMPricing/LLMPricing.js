@@ -161,11 +161,11 @@ const modelData = [
 
 export default function LLMPricing() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [sortConfig, setSortConfig] = useState({ key: 'outputPrice', direction: 'desc' });
+  const [sortConfig] = useState({ key: 'outputPrice', direction: 'desc' }); // Removed setSortConfig
   const [selectedProvider, setSelectedProvider] = useState('all');
 
   const providers = ['all', 'Google', 'OpenAI', 'Anthropic', 'AWS', 'Azure', 'Mistral', 'Cohere'];
-  
+
 
   const filteredAndSortedData = modelData
     .filter(model => 
