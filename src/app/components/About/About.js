@@ -82,7 +82,7 @@ const About = () => {
           <p className="text-white-800">
             Please feel free to share your views about the blog via comments. If you want to contact me, please drop an email at:
             <a 
-              href="mailto:your-email@example.com" 
+              href="mailto:contact@galaxyofai.com" 
               className="text-blue-500 hover:underline ml-2"
             >
              contact@galaxyofai.com

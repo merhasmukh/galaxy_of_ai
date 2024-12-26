@@ -21,8 +21,12 @@ import { useState } from 'react'
 
   const projects = [
     { name: 'Python Roadmap', description: "Python Roadmap For AI, ML, DL ,GenAI,LLM Developer", href: '/roadmaps/python-developer',     icon: '/tech/svg/Python.svg' },
-    { name: 'GenAI | LLM Roadmap', description: 'GenAI And LLM Roadmap For Developer', href: '/roadmaps/genai-llm-developer', icon: '/tech/svg/Brain.svg' },
+    { name: 'Backend Development Roadmap', description: "Master backend development skills for AI/ML applications", href: '/roadmaps/backend-developer',     icon: '/tech/svg/Python.svg' },
     { name: 'AI | ML Roadmap', description: 'AI/ML Roadmap For Developer', href: '/roadmaps/ai-ml-developer', icon: '/globe.svg' },
+    { name: 'MLOps Development Roadmap', description: 'Build expertise in managing and deploying machine learning workflows', href: '/roadmaps/mlops-developer', icon: '/globe.svg' },
+    { name: 'GenAI | LLM Roadmap', description: 'GenAI And LLM Roadmap For Developer', href: '/roadmaps/genai-llm-developer', icon: '/tech/svg/Brain.svg' },
+    { name: 'Agentic AI Developer Roadmap', description: 'Track your progress and build your career in autonomous AI step by step', href: '/roadmaps/agentic-ai-developer', icon: '/tech/svg/Brain.svg' },
+    
     // { name: 'Integrations', description: 'Connect with third-party tools', href: '#', icon: SquaresPlusIcon },
     // { name: 'Automations', description: 'Build strategic funnels that will convert', href: '#', icon: ArrowPathIcon },
   ]
@@ -84,11 +88,10 @@ const Header = () => {
                       key={item.name}
                       className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm/6 hover:bg-gray-800"
                     >
-                      <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray group-hover:bg-white">
+                      {/* <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray group-hover:bg-white">
                         <Image src={item.icon} alt={`${item.name} icon`} height={60} width={60} />
 
-                        {/* <item.icon aria-hidden="true" className="size-6 text-gray-600 group-hover:text-indigo-600" /> */}
-                      </div>
+                      </div> */}
                       <div className="flex-auto">
                         <a href={item.href} className="block font-semibold text-white-900">
                           {item.name}
@@ -116,6 +119,9 @@ const Header = () => {
             </a> */}
             <Link href="/blog" className="text-sm/6 font-semibold text-white-900">
               Blog
+            </Link>
+            <Link href="/tools" className="text-sm/6 font-semibold text-white-900">
+              Tools
             </Link>
             <Link href="/about" className="text-sm/6 font-semibold text-white-900">
               About
@@ -210,6 +216,13 @@ const Header = () => {
                     className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white-900 hover:bg-white-50"
                   >
                     Blog
+                  </Link>
+                  <Link
+                    href="/tools"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white-900 hover:bg-white-50"
+                  >
+                    Tools
                   </Link>
                   <Link
                     href="/about"
