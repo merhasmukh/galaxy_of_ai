@@ -123,6 +123,9 @@ const Header = () => {
             <Link href="/tools" className="text-sm/6 font-semibold text-white-900">
               Tools
             </Link>
+            <Link href="/#notes" className="text-sm/6 font-semibold text-white-900">
+              Notes
+            </Link>
             <Link href="/about" className="text-sm/6 font-semibold text-white-900">
               About
             </Link>
@@ -223,6 +226,13 @@ const Header = () => {
                     className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white-900 hover:bg-white-50"
                   >
                     Tools
+                  </Link>
+                  <Link
+                    href="/#notes"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white-900 hover:bg-white-50"
+                  >
+                    Notes
                   </Link>
                   <Link
                     href="/about"

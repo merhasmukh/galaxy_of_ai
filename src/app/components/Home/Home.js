@@ -1,5 +1,6 @@
 
-import { Globe, Brain, Sparkles, ChevronRight, ExternalLink, Code, Activity } from 'lucide-react';
+import {Brain, ChevronRight, ExternalLink, Code, Activity ,Book} from 'lucide-react';
+import Link from 'next/link';
 export default function Home() {
  
   
@@ -38,7 +39,7 @@ export default function Home() {
       </header>
 
       {/* Roadmaps Section */}
-      <section id="roadmaps" className="container mx-auto px-4 py-16">
+      <section id="roadmaps" className="container mx-auto px-4 py-16 border-2 border-purple-400 rounded-lg mb-4">
         <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 text-center">Developer Roadmaps</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <a
@@ -74,35 +75,46 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section id="features" className="container mx-auto px-4 py-16">
-      <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 text-center">Features</h2>
-
+      <section id="notes" className="container mx-auto px-4 py-16 border-2px border-2 border-blue-400 rounded-lg">
+        <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 text-center">Study Notes</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-white/5 p-6 rounded-xl backdrop-blur-sm transform hover:scale-105 transition-transform">
-            <Globe className="w-12 h-12 text-blue-400 mb-4" />
-            <h3 className="text-xl font-semibold text-white mb-3">AI Insights</h3>
+          <Link
+            href="/notes/machine-learning-handwritten-notes"
+            className="bg-white/5 p-6 rounded-xl backdrop-blur-sm transform hover:scale-105 transition-transform"
+          >
+            <Book className="w-12 h-12 text-blue-400 mb-4" />
+            <h3 className="text-xl font-semibold text-white mb-3">Machine Learning Notes</h3>
             <p className="text-gray-400">
-              Deep dive into the latest AI trends, breakthroughs, and applications shaping our future.
+              Detailed notes and resources to master machine learning concepts and techniques.
             </p>
-          </div>
-          <div className="bg-white/5 p-6 rounded-xl backdrop-blur-sm transform hover:scale-105 transition-transform">
+          </Link>
+          <Link
+            href="/notes/natural-language-processing-nlp-handwritten-notes"
+            className="bg-white/5 p-6 rounded-xl backdrop-blur-sm transform hover:scale-105 transition-transform"
+          >
             <Brain className="w-12 h-12 text-purple-400 mb-4" />
-            <h3 className="text-xl font-semibold text-white mb-3">ML Resources</h3>
+            <h3 className="text-xl font-semibold text-white mb-3">Natural Language Processing (NLP) Notes</h3>
             <p className="text-gray-400">
-              Comprehensive guides and tutorials on machine learning concepts and implementations.
+              Explore NLP.
             </p>
-          </div>
-          <div className="bg-white/5 p-6 rounded-xl backdrop-blur-sm transform hover:scale-105 transition-transform">
-            <Sparkles className="w-12 h-12 text-pink-400 mb-4" />
-            <h3 className="text-xl font-semibold text-white mb-3">Future Tech</h3>
+          </Link>
+          <Link
+            href="/notes/mathematics-handwritten-notes"
+            className="bg-white/5 p-6 rounded-xl backdrop-blur-sm transform hover:scale-105 transition-transform"
+          >
+            <Code className="w-12 h-12 text-green-400 mb-4" />
+            <h3 className="text-xl font-semibold text-white mb-3">Mathematics Notes</h3>
             <p className="text-gray-400">
-              Explore emerging technologies and their potential impact on society and industry.
+              Comprehensive notes on Mathematics for beginners.
             </p>
-          </div>
+          </Link>
+         
         </div>
       </section>
 
+
+
+    
      
 
       {/* Newsletter Section */}
