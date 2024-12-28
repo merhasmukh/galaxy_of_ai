@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Copy, Check, Code, MessagesSquare, Image as ImageIcon, FileCode } from 'lucide-react';
 import Image from 'next/image';
+
 const CustomButton = ({ children, onClick, className = '' }) => (
   <button
     onClick={onClick}
@@ -27,10 +28,10 @@ Give me code in next js for simple calculator background is in gray color
 The page should be modern and futuristic, with gradient gray background and calcilator is proper visible also make this page to mobile responsive
 take your time but generate bug free code for next js page
 that i have to use client side`,
-      filePath: "src/app/components/Prompts/FirstCode.js",
+      filePath: "/prompts/FirstCode.js",
       screenshot: "/prompts/1.png",
       tags: ["Next.js", "Tailwind CSS", "Layout"],
-      code: "Loading..." // Initial state
+      code: "Loading...", // Initial state
     },
     // Add more items as needed
   ]);
@@ -39,36 +40,45 @@ that i have to use client side`,
 
   useEffect(() => {
     const fetchCode = async () => {
-      const updatedItems = await Promise.all(
-        showcaseItems.map(async (item) => {
-          try {
-            const response = await fetch(`/api/code?path=${encodeURIComponent(item.filePath)}`);
-            const data = await response.json();
-            return {
-              ...item,
-              code: data.code || 'Error loading code'
-            };
-          } catch (error) {
-            console.error('Error fetching code:', error);
-            return {
-              ...item,
-              code: 'Error loading code'
-            };
-          }
-        })
-      );
-      setShowcaseItems(updatedItems);
+      try {
+        const updatedItems = await Promise.all(
+          showcaseItems.map(async (item) => {
+            try {
+              const response = await fetch(item.filePath); // Fetch the file
+              if (!response.ok) throw new Error(`Failed to fetch ${item.filePath}`);
+              const code = await response.text(); // Read the file's content
+              return {
+                ...item,
+                code: code || 'Error loading code',
+              };
+            } catch (error) {
+              console.error('Error fetching code for:', item.title, error);
+              return {
+                ...item,
+                code: 'Error loading code',
+              };
+            }
+          })
+        );
+        setShowcaseItems(updatedItems);
+      } catch (error) {
+        console.error('Error fetching showcase items:', error);
+      }
     };
 
     fetchCode();
-  }, []);
+  }, [showcaseItems]);
 
   const handleCopy = async (text, id) => {
-    await navigator.clipboard.writeText(text);
-    setCopiedStates({ ...copiedStates, [id]: true });
-    setTimeout(() => {
-      setCopiedStates({ ...copiedStates, [id]: false });
-    }, 2000);
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopiedStates((prevState) => ({ ...prevState, [id]: true }));
+      setTimeout(() => {
+        setCopiedStates((prevState) => ({ ...prevState, [id]: false }));
+      }, 2000);
+    } catch (error) {
+      console.error('Error copying text:', error);
+    }
   };
 
   return (
