@@ -1,9 +1,8 @@
-// app/components/Prompts/PromptIdeas.js
 'use client';
 
 import React, { useState, useEffect } from 'react';
 import { Copy, Check, Code, MessagesSquare, Image as ImageIcon, FileCode } from 'lucide-react';
-
+import Image from 'next/image';
 const CustomButton = ({ children, onClick, className = '' }) => (
   <button
     onClick={onClick}
@@ -157,10 +156,12 @@ that i have to use client side`,
                       <ImageIcon className="w-4 h-4" />
                       <h3 className="font-medium">Preview</h3>
                     </div>
-                    <img
+                    <Image
                       src={item.screenshot}
                       alt={`Preview of ${item.title}`}
                       className="w-full rounded-md border border-slate-700"
+                      height={600}
+                      width={1500}
                     />
                   </div>
                 </div>

@@ -7,7 +7,7 @@ export async function GET(request) {
   const filePath = searchParams.get('path');
 
   if (!filePath) {
-    return NextResponse.json({ error: 'No file path provided' }, { status: 400 });
+    return NextResponse.json({ "error": 'No file path provided' }, { status: 400 });
   }
 
   try {
@@ -15,6 +15,6 @@ export async function GET(request) {
     const code = await fs.readFile(fullPath, 'utf8');
     return NextResponse.json({ code });
   } catch (error) {
-    return NextResponse.json({ error: 'Error reading file' }, { status: 500 });
+    return NextResponse.json({ "error": `Error reading file ${error}` }, { status: 500 });
   }
 }
