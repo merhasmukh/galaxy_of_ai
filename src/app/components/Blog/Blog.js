@@ -5,6 +5,16 @@ import Link from 'next/link';
 export default function Blogs() {
   const blogs = [
     {
+      title: "Comparison of AI, ML, Generative AI, and Agentic AI",
+      description: "Explore the distinctions and key features of Artificial Intelligence, Machine Learning, Generative AI, and Agentic AI. Understand their scopes, examples, and unique characteristics.",
+      link: "/blog/comparison-ai-ml-generative-agentic-ai",
+    },
+    {
+      title: "Agentic AI Developer vs Engineer: Key Differences and Roles",
+      description: "Learn the distinctions between an Agentic AI Developer and an Engineer. Understand their roles, skills, and responsibilities in building intelligent systems.",
+      link: "/blog/ai-agent-llm-skills-required",
+    },
+    {
       title: "LLM Model Pricing | Compare AI Model Costs",
       description: "Explore and compare the pricing of top LLM models from OpenAI, Anthropic, Google, AWS, and more. Analyze token costs, context windows, and capabilities to find the best fit for your needs",
       link: "/blog/llm-pricing",
