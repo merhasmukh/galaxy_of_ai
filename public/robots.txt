@@ -1,9 +1,6 @@
-# *
+# Allow all user agents
 User-agent: *
 Allow: /
 
-# Host
-Host: https://galaxyofai.com
-
-# Sitemaps
+# Sitemap location
 Sitemap: https://galaxyofai.com/sitemap.xml
