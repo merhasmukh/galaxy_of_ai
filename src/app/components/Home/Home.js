@@ -14,11 +14,11 @@ export default function Home() {
               Galaxy of AI
             </h1>
             <p className="text-lg md:text-xl text-gray-300 max-w-2xl mb-8 px-4">
-            Your Gateway to Generative AI, LLMs, and Python Programming. 
-            <p>
-            Join us on a journey of Generative AI and LLMs.
+            Your Gateway to Generative AI, LLMs, Agentic AI and Python Programming. 
+              <p>
+              Join us on a journey of Generative AI and LLMs.
 
-            </p>
+              </p>
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto px-4">
@@ -34,12 +34,20 @@ export default function Home() {
             >
               Visit Blog <ExternalLink className="w-5 h-5" />
             </a>
+            <a
+              href="https://www.youtube.com/@galaxyofai"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full flex items-center justify-center gap-2"
+            >
+              Visit YouTube <ExternalLink className="w-5 h-5" />
+            </a>
           </div>
+
+          
         </div>
       </header>
 
       {/* Roadmaps Section */}
-      <section id="roadmaps" className="container mx-auto px-4 py-16 border-2 border-purple-400 rounded-lg mb-4">
+      <section id="roadmaps" className="container mx-auto px-4 py-16  mb-4">
         <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 text-center">Developer Roadmaps</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <a
@@ -75,7 +83,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="notes" className="container mx-auto px-4 py-16 border-2px border-2 border-blue-400 rounded-lg">
+      <section id="notes" className="container mx-auto px-4 py-16 ">
         <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 text-center">Study Notes</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <Link

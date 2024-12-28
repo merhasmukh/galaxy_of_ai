@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     default: 'Galaxy of AI | Artificial Intelligence & Machine Learning Resources',
     template: '%s | Galaxy of AI'
   },
-  description: 'Explore the universe of Artificial Intelligence and Machine Learning with comprehensive guides, tutorials, and insights. Learn about the latest AI trends and technologies.',
+  description: 'Explore the universe of Artificial Intelligence, Machine Learning, Generative AI, AGentic AI and Python Programming with comprehensive guides, tutorials, and insights. Learn about the latest AI trends and technologies.',
   keywords: [
     'artificial intelligence',
     'machine learning',
@@ -24,7 +24,11 @@ export const metadata: Metadata = {
     'tech education',
     'AI insights',
     'future technology',
-    'AI development'
+    'AI development',
+    'Generative AI',
+    'Agentic AI',
+    'AI Agent',
+    'LLM'
   ],
   authors: [
     {
@@ -40,8 +44,8 @@ export const metadata: Metadata = {
     telephone: false,
   },
   openGraph: {
-    title: 'Galaxy of AI | AI & ML Resources',
-    description: 'Your gateway to understanding Artificial Intelligence and Machine Learning. Expert insights, tutorials, and resources.',
+    title: 'Galaxy of AI | AI, ML, GenAI, Agentic AI & LLM Resources',
+    description: 'Explore the universe of Artificial Intelligence, Machine Learning, Generative AI, AGentic AI and Python Programming with comprehensive guides, tutorials, and insights. Learn about the latest AI trends and technologies.',
     url: 'https://galaxyofai.com',
     siteName: 'Galaxy of AI',
     images: [

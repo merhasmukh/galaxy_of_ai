@@ -31,6 +31,16 @@ import { useState } from 'react'
     // { name: 'Automations', description: 'Build strategic funnels that will convert', href: '#', icon: ArrowPathIcon },
   ]
 
+  const services = [
+    { name: 'Tools', description: "Tools For AI, ML, DL ,GenAI,LLM Developer", href: '/tools'},
+    { name: 'Prompts', description: "Prompts For AI, ML, DL ,GenAI,LLM Developer", href: '/prompt-engineering' },
+    { name: 'Notes', description: "Notes For AI, ML, DL ,GenAI,LLM Developer", href: '/#notes' },
+
+    
+    // { name: 'Integrations', description: 'Connect with third-party tools', href: '#', icon: SquaresPlusIcon },
+    // { name: 'Automations', description: 'Build strategic funnels that will convert', href: '#', icon: ArrowPathIcon },
+  ]
+
   // const frameworks = [
   //   { name: 'Flask', description: "Flask API", href: 'https://github.com/merhasmukh/Flask-API-Hub',     icon: './images/tech/svg/Flask.svg'},
   //   { name: 'FastAPI', description: "FastAPI", href: 'https://github.com/merhasmukh/FastAPI-API-Hub',     icon: './images/tech/svg/FastAPI.svg'},
@@ -93,10 +103,10 @@ const Header = () => {
 
                       </div> */}
                       <div className="flex-auto">
-                        <a href={item.href} className="block font-semibold text-white-900">
+                        <Link href={item.href} className="block font-semibold text-white-900">
                           {item.name}
                           <span className="absolute inset-0" />
-                        </a>
+                        </Link>
                         <p className="mt-1 text-white-900">{item.description}</p>
                       </div>
                     </div>
@@ -105,7 +115,40 @@ const Header = () => {
                 
               </PopoverPanel>
             </Popover>
+
+            <Popover className="relative">
+              <PopoverButton className="flex items-center gap-x-1 text-sm/6 font-semibold text-white-900">
+                Services
+                <ChevronDownIcon aria-hidden="true" className="size-5 flex-none text-gray-400" />
+              </PopoverButton>
   
+              <PopoverPanel
+                transition
+                className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-white-900/5 transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
+              >
+                <div className="p-4 bg-gradient-to-br from-[#0F172A] to-[#1E293B]">
+                  {services.map((item) => (
+                    <div
+                      key={item.name}
+                      className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm/6 hover:bg-gray-800"
+                    >
+                      {/* <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray group-hover:bg-white">
+                        <Image src={item.icon} alt={`${item.name} icon`} height={60} width={60} />
+
+                      </div> */}
+                      <div className="flex-auto">
+                        <Link href={item.href} className="block font-semibold text-white-900">
+                          {item.name}
+                          <span className="absolute inset-0" />
+                        </Link>
+                        <p className="mt-1 text-white-900">{item.description}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                
+              </PopoverPanel>
+            </Popover>  
   
            
             {/* <a href="/education" className="text-sm/6 font-semibold text-white-900">
@@ -120,12 +163,8 @@ const Header = () => {
             <Link href="/blog" className="text-sm/6 font-semibold text-white-900">
               Blog
             </Link>
-            <Link href="/tools" className="text-sm/6 font-semibold text-white-900">
-              Tools
-            </Link>
-            <Link href="/#notes" className="text-sm/6 font-semibold text-white-900">
-              Notes
-            </Link>
+           
+           
             <Link href="/about" className="text-sm/6 font-semibold text-white-900">
               About
             </Link>
@@ -134,11 +173,7 @@ const Header = () => {
               Company
             </a> */}
           </PopoverGroup>
-          {/* <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <a href="/" className="text-sm/6 font-semibold text-gray-900">
-              Log in <span aria-hidden="true">&rarr;</span>
-            </a>
-          </div> */}
+          
         </nav>
         <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
           <div className="fixed inset-0 z-10" />
@@ -193,6 +228,27 @@ const Header = () => {
                       ))}
                     </DisclosurePanel>
                   </Disclosure>
+
+                  <Disclosure as="div" className="-mx-3">
+                    
+                    <DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base/7 font-semibold text-white-900 hover:bg-white-50">
+                      Services
+                      <ChevronDownIcon aria-hidden="true" className="size-5 flex-none group-data-[open]:rotate-180" />
+                    </DisclosureButton>
+                    <DisclosurePanel className="mt-2 space-y-2">
+                      {[...services].map((item) => (
+                        <DisclosureButton
+                          key={item.name}
+                          as="a"
+                          href={item.href}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="block rounded-lg py-2 pl-6 pr-3 text-sm/7 font-semibold text-white-900 hover:bg-white-50"
+                        >
+                          {item.name}
+                        </DisclosureButton>
+                      ))}
+                    </DisclosurePanel>
+                  </Disclosure>
                   
                  
                   {/* <a
@@ -220,20 +276,8 @@ const Header = () => {
                   >
                     Blog
                   </Link>
-                  <Link
-                    href="/tools"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white-900 hover:bg-white-50"
-                  >
-                    Tools
-                  </Link>
-                  <Link
-                    href="/#notes"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white-900 hover:bg-white-50"
-                  >
-                    Notes
-                  </Link>
+                 
+          
                   <Link
                     href="/about"
                     onClick={() => setMobileMenuOpen(false)}

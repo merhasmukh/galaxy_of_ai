@@ -12,7 +12,9 @@
   "dependencies": {
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",
+    "button": "^1.1.1",
     "framer-motion": "^11.15.0",
+    "fs.promises": "^0.1.2",
     "heroicons": "^2.2.0",
     "lucide-react": "^0.469.0",
     "next": "15.1.0",
