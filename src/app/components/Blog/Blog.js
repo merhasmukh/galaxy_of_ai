@@ -10,8 +10,8 @@ export default function Blogs() {
       link: "/blog/comparison-ai-ml-generative-agentic-ai",
     },
     {
-      title: "Agentic AI Developer vs Engineer: Key Differences and Roles",
-      description: "Learn the distinctions between an Agentic AI Developer and an Engineer. Understand their roles, skills, and responsibilities in building intelligent systems.",
+      title: "Skills Required for AI Agent and LLM Engineer",
+      description: "Explore the essential skills needed to excel as an AI Agent and LLM Engineer. Learn about cutting-edge AI technologies, engineering principles, and problem-solving abilities.",
       link: "/blog/ai-agent-llm-skills-required",
     },
     {
