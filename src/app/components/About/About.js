@@ -3,8 +3,6 @@ import {
   Code, 
   Brain, 
   BookOpen, 
-
-  Link
 } from 'lucide-react';
 
 const About = () => {
