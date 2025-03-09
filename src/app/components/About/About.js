@@ -10,7 +10,7 @@ import {
 const About = () => {
   const skills = [
     "Python", 
-    "React", 
+    "Next.js", 
     "GenAI", 
     "LLM Development", 
     "Machine Learning",
@@ -75,7 +75,7 @@ const About = () => {
         </div>
 
         {/* Contact Section */}
-        <div className="bg-white-50 shadow-lg rounded-lg p-8 border border-white-100">
+        {/* <div className="bg-white-50 shadow-lg rounded-lg p-8 border border-white-100">
           <h3 className="text-2xl font-semibold mb-4 flex items-center text-white-900">
             <Link className="mr-3 text-white-600" /> How Can You Contact Us?
           </h3>
@@ -88,7 +88,7 @@ const About = () => {
              contact@galaxyofai.com
             </a>.
           </p>
-        </div>
+        </div> */}
       </div>
     </div>
   );

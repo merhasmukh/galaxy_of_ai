@@ -29,12 +29,6 @@ export default function Home() {
               Explore Roadmaps <ChevronRight className="w-5 h-5" />
             </a>
             <a
-              href="https://blog.galaxyofai.com"
-              className="border border-blue-600 text-blue-400 hover:bg-blue-900/20 px-6 py-3 rounded-full flex items-center justify-center gap-2"
-            >
-              Visit Blog <ExternalLink className="w-5 h-5" />
-            </a>
-            <a
               href="https://www.youtube.com/@galaxyofai"
               className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full flex items-center justify-center gap-2"
             >
