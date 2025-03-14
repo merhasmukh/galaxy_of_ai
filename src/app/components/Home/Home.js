@@ -14,7 +14,7 @@ export default function Home() {
           <p className="text-lg md:text-xl text-gray-300 max-w-2xl mb-8 px-4">
             Your Gateway to <span className="text-blue-400 font-semibold">Generative AI</span>, <span className="text-purple-400 font-semibold">LLMs</span>, 
             <span className="text-pink-400 font-semibold">Agentic AI</span> and <span className="text-green-400 font-semibold">Python Programming</span>.  
-            <br />Join us on a journey into the **future of AI!**
+            <br />Join us on a journey into the <b>Future of AI!</b>
           </p>
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto px-4">
             <Link href="/roadmaps" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full flex items-center justify-center gap-2 shadow-lg transition duration-300 hover:scale-105">
