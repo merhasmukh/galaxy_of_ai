@@ -3,7 +3,7 @@
 import "./globals.css";
 
 import Script from "next/script";
-import Header from "./components/Header.js"
+import Header from "./components/Header"
 import Footer from "./components/Footer.js"
 export default function RootLayout({
   children,
