@@ -56,6 +56,11 @@ const Header = () => {
               🚀 Contribute
             </button>
           </Link>
+          <Link href="/user/login">
+            <button className="ml-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full shadow-md transition-transform hover:scale-105">
+              Login
+            </button>
+          </Link>
         </PopoverGroup>
       </nav>
 
@@ -97,6 +102,11 @@ const Header = () => {
           <Link href="/contribute" onClick={() => setMobileMenuOpen(false)} className="w-full flex justify-center">
             <button className="w-[90%] bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full shadow-md transition-transform hover:scale-105 mt-4">
               🚀 Contribute
+            </button>
+          </Link>
+          <Link href="/user/login" onClick={() => setMobileMenuOpen(false)} className="w-full flex justify-center">
+            <button className="w-[90%] bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full shadow-md transition-transform hover:scale-105 mt-4">
+              Login
             </button>
           </Link>
         </div>
