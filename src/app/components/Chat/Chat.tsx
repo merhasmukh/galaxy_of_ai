@@ -87,7 +87,7 @@ export default function Chat() {
   };
 
   return (
-    <div className="flex flex-col sm:flex-row h-screen w-full">
+    <div className="flex flex-col sm:flex-row h-[calc(100vh-theme(spacing.header)-theme(spacing.footer))] w-full">
       {/* Sidebar */}
       <aside className="w-full sm:w-64 bg-gray-800 text-white p-4 flex flex-col">
         <div className="mb-4">
@@ -136,7 +136,7 @@ export default function Chat() {
             />
             <button
               type="submit"
-              className="bg-orange-400 text-[#0f1729] rounded-full px-6 py-3 font-semibold hover:bg-orange-500 transition-colors"
+              className="bg-orange-400 text-[#0f1729] rounded-full px-6 py-3 font-semibold hover:bg-orange-500 transition-colors mb-4"
             >
               Send
             </button>

@@ -24,16 +24,7 @@ export default function Blogs() {
       description: "Discover the key differences between an Agentic AI Developer and an Engineer. Explore their roles, skills, and responsibilities to choose the right career path in AI.",
       link: "/blog/comparison-agentic-ai",
     },
-    {
-      title: "Understanding Vector Embeddings in AI",
-      description: "Learn how vector embeddings are used to represent data in AI systems, including their applications in NLP and beyond.",
-      link: "https://blog.galaxyofai.com/everything-about-vector-embeddings/",
-    },
-    {
-      title: "Introduction: Improving Accuracy of LLM Applications",
-      description: "Introduction: Improving Accuracy of LLM Applications, we give overview of the how we can improve accuracy of LLM applications.",
-      link: "https://blog.galaxyofai.com/introduction-improving-accuracy-of-llm-applications/",
-    },
+
   ];
   
   
