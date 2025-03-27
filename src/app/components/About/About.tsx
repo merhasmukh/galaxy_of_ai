@@ -2,6 +2,7 @@ import {
   Code, 
   Brain, 
   BookOpen, 
+  Users
 } from 'lucide-react';
 
 const About = () => {
@@ -34,10 +35,15 @@ const About = () => {
               About Us
             </span>
           </h3>
+          <p className="text-white/60 italic mb-4">
+          Learn, Build, and Collaborate in the World of AI.
+        </p>
+
           <p className="text-white/80 leading-relaxed">
             Welcome to <span className="font-semibold text-[#38BDF8]">Galaxy of AI</span>—an open-source platform for AI/ML, NLP, and Generative AI (LLMs) enthusiasts, researchers, and developers.  
             Our mission is to create a knowledge-sharing ecosystem that fosters collaboration, accelerates AI research, and helps developers stay ahead of technological advancements.
           </p>
+
         </div>
 
         {/* Mission Statement */}
@@ -74,6 +80,22 @@ const About = () => {
             ))}
           </div>
         </div>
+
+        {/* Community */}
+      <div className="bg-[#1E293B] shadow-xl rounded-2xl p-10 mt-12 border border-white/20 hover:border-white/40 transition duration-300">
+        <h3 className="text-3xl font-bold mb-4 flex items-center text-white">
+          <Users className="mr-3 text-[#38BDF8]" />
+          <span className="bg-gradient-to-r from-[#38BDF8] to-[#9333EA] text-transparent bg-clip-text">
+            Community Driven
+          </span>
+        </h3>
+        <p className="text-white/80 leading-relaxed">
+          Galaxy of AI thrives because of its vibrant community. From contributors to curious learners, 
+          every member adds value to our journey. Want to join? Collaborate with us on GitHub and be a part of something big.
+        </p>
+      </div>
+      
+
 
       </div>
     </div>
