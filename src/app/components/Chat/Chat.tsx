@@ -87,9 +87,9 @@ export default function Chat() {
   };
 
   return (
-    <div className="flex flex-col sm:flex-row h-[calc(100vh-theme(spacing.header)-theme(spacing.footer))] w-full">
+    <div className="flex flex-col sm:flex-row h-screen w-full overflow-hidden">
       {/* Sidebar */}
-      <aside className="w-full sm:w-64 bg-gray-800 text-white p-4 flex flex-col">
+      <aside className="w-full sm:w-64 bg-gray-800 text-white p-4 flex flex-col overflow-y-auto sm:overflow-y-auto">
         <div className="mb-4">
           <button
             onClick={handleNewChat}
@@ -98,7 +98,7 @@ export default function Chat() {
             + New Chat
           </button>
         </div>
-        <ul className="space-y-2 overflow-y-auto">
+        <ul className="space-y-2">
           {chatList.map((chat, idx) => (
             <li
               key={idx}
@@ -112,9 +112,12 @@ export default function Chat() {
       </aside>
 
       {/* Main Chat Section */}
-      <div className="flex flex-col flex-grow bg-gradient-to-br from-[#0F172A] to-[#1E293B] text-gray-100">
-        <div className="flex-grow px-4 sm:px-6 md:px-8 flex flex-col">
-          <div ref={chatWindowRef} className="flex-grow overflow-y-auto p-4 bg-gray-900 rounded-2xl shadow-md">
+      <div className="flex flex-col flex-grow bg-gradient-to-br from-[#0F172A] to-[#1E293B] text-gray-100 overflow-hidden">
+        <div className="flex flex-col h-full px-4 sm:px-6 md:px-8">
+          <div
+            ref={chatWindowRef}
+            className="flex-grow overflow-y-auto p-4 bg-gray-900 rounded-2xl shadow-md"
+          >
             {messages.map((message, index) => (
               <div key={index} className={`mb-2 flex ${message.isUser ? 'justify-end' : 'justify-start'}`}>
                 <span className={`p-3 rounded-lg ${message.isUser ? 'bg-orange-400 text-[#0f1729]' : 'bg-gray-700 text-white'}`}>
@@ -126,7 +129,10 @@ export default function Chat() {
             ))}
           </div>
 
-          <form onSubmit={handleSendMessage} className="mt-4 flex items-center gap-2 w-full pb-4 sm:pb-0">
+          <form
+            onSubmit={handleSendMessage}
+            className="mt-4 flex items-center gap-2 w-full pb-4 sm:pb-0"
+          >
             <input
               type="text"
               value={inputMessage}

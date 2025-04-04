@@ -14,5 +14,5 @@ export function middleware(req: NextRequest) {
 
 // Apply middleware to protected pages
 export const config = {
-  matcher: [ "/admin/:path*"],
+  matcher: [ "/admin/:path*","/user/:path*"],
 };
