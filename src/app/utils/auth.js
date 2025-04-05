@@ -35,6 +35,8 @@ export const Logout = async () => {
     localStorage.removeItem("access_token");
     localStorage.removeItem("refresh_token");
     localStorage.removeItem("token_expiry_time");
+    localStorage.removeItem("user");
+
     document.cookie = "accessToken=; Max-Age=0; path=/;";
   
     // Call logout API to clear session cookies server-side

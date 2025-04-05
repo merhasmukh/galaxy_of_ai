@@ -36,6 +36,42 @@ export default function Contributors() {
         <p className="text-lg text-gray-300 text-center mt-4 max-w-3xl mx-auto">
           We appreciate all the amazing contributors who have helped build and improve this open-source project! 🚀
         </p>
+        <div className="mt-6 flex flex-col md:flex-row justify-center items-center gap-4">
+          {/* Discord Button */}
+          <Link href="https://discord.gg/ygzgDNKgJN" target="_blank" rel="noopener noreferrer">
+            <button className="w-full md:w-auto bg-blue-600 hover:bg-green-700 font-bold text-white px-6 py-3 rounded-full shadow-lg transition-transform transform hover:scale-105">
+              Join Discord Server 🚀
+            </button>
+          </Link>
+        </div>
+               {/* Call to Action */}
+        <div className="text-center mt-16">
+          <h2 className="text-xl font-semibold">Want to contribute? 🎯</h2>
+          <p className="text-gray-400 mt-2">Choose a repository to contribute:</p>
+
+
+        </div>
+
+          {/* Button Wrapper - Responsive Flex Layout */}
+          <div className="mt-6 flex flex-col md:flex-row justify-center items-center gap-4">
+            
+            {/* Frontend Button */}
+            <Link href="https://github.com/merhasmukh/galaxy_of_ai" target="_blank" rel="noopener noreferrer">
+              <button className="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full shadow-lg transition-transform transform hover:scale-105">
+                Contribute on Frontend 🚀
+              </button>
+            </Link>
+
+            {/* Backend Button */}
+            <Link href="https://github.com/merhasmukh/Galaxy-Of-AI-API-Hub" target="_blank" rel="noopener noreferrer">
+              <button className="w-full md:w-auto bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full shadow-lg transition-transform transform hover:scale-105">
+                Contribute on Backend 🚀
+              </button>
+            </Link>
+
+            
+
+          </div>
 
         {/* Contributors Grid */}
         <h2 className="text-2xl font-bold text-center mt-12">Frontend Contributors</h2>
@@ -52,30 +88,7 @@ export default function Contributors() {
           ))}
         </div>
 
-        {/* Call to Action */}
-        <div className="text-center mt-16">
-  <h2 className="text-xl font-semibold">Want to contribute? 🎯</h2>
-  <p className="text-gray-400 mt-2">Choose a repository to contribute:</p>
-
-  {/* Button Wrapper - Responsive Flex Layout */}
-  <div className="mt-6 flex flex-col md:flex-row justify-center items-center gap-4">
-    
-    {/* Frontend Button */}
-    <Link href="https://github.com/merhasmukh/galaxy_of_ai" target="_blank" rel="noopener noreferrer">
-      <button className="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full shadow-lg transition-transform transform hover:scale-105">
-        Contribute on Frontend 🚀
-      </button>
-    </Link>
-
-    {/* Backend Button */}
-    <Link href="https://github.com/merhasmukh/Galaxy-Of-AI-API-Hub" target="_blank" rel="noopener noreferrer">
-      <button className="w-full md:w-auto bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full shadow-lg transition-transform transform hover:scale-105">
-        Contribute on Backend 🚀
-      </button>
-    </Link>
-
-  </div>
-</div>
+ 
 
 
       </div>
