@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 const Footer = () => {
   return (
-    <footer className="flex flex-col items-center gap-2 py-4 bg-gradient-to-br from-[#0F172A] to-[#1E293B] text-white w-full text-center">
+    <footer className="flex flex-col items-center gap-2 py-4 bg-gradient-to-br from-[#0F172A] to-[#1E293B] text-white h-auto w-full text-center">
       <div className="flex gap-6 flex-wrap justify-center">
         <Link
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
