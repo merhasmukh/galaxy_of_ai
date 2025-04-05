@@ -1,3 +1,5 @@
+import { signOut } from "next-auth/react";
+
 export const isTokenExpired = () => {
     if (typeof window === "undefined") {
         // localStorage is not available on the server
@@ -28,13 +30,19 @@ export const refreshToken = async () => {
     }
 };
 
-export const Logout = () => {
-
+export const Logout = async () => {
+    // Clear custom tokens
     localStorage.removeItem("access_token");
+    localStorage.removeItem("refresh_token");
     localStorage.removeItem("token_expiry_time");
+    document.cookie = "accessToken=; Max-Age=0; path=/;";
   
-    // Redirect to the login page
-    window.location.href = "/login";
-        
+    // Call logout API to clear session cookies server-side
+    await fetch("/api/logout", { method: "POST" });
   
-    };
+    // Sign out NextAuth (important: no redirect here)
+    await signOut({ redirect: false });
+  
+    // Redirect manually
+    window.location.href = "/user/login";
+  };

@@ -15,6 +15,8 @@ export default function RootLayout({
     </SessionProvider>
   );
 }
+const ADS_PUB_ID = process.env.NEXT_PUBLIC_ADS_PUB_ID;
+const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_TRACKING_ID;
 
 // Separate component for authentication check
 function LayoutContent({ children }: { children: React.ReactNode }) {
@@ -25,6 +27,11 @@ function LayoutContent({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     // Check if JWT accessToken exists in cookies
     setHasJwt(document.cookie.includes("accessToken="));
+    const user=localStorage.getItem("user");
+    if  (user !== null) {
+      setHasJwt(true);
+    }
+
     setLoading(false);
   }, []);
 
@@ -34,17 +41,22 @@ function LayoutContent({ children }: { children: React.ReactNode }) {
     <html lang="en">
       <head>
         {/* Google Ads & Analytics Scripts */}
+       
+
         <Script
           async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1479377630872521"
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADS_PUB_ID}`}
+          crossOrigin="anonymous"
         />
-        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-84FYVM6X8L" />
+
+        <Script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`} />
+
         <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-84FYVM6X8L');
+            gtag('config', '${GA_TRACKING_ID}');
           `}
         </Script>
       </head>
