@@ -1,5 +1,5 @@
 // page.tsx
-import ResetPasswordPage from "../../../../../components/User/Login/ResetPasswordToken";
+import ResetPasswordPage from "@/app/components/User/Login/ResetPasswordToken";
 
 interface PageProps {
   params: Promise<{ uid: string; token: string }>;}
