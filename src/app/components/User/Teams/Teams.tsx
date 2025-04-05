@@ -12,7 +12,7 @@ import {
 } from 'lucide-react';
 
 
-function Dashboard() {
+function Teams() {
 
   const recentActivity = [
     { id: 1, type: 'completed', task: 'API Integration', time: '2 hours ago' },
@@ -136,4 +136,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default Teams;
