@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import {
+  Laptop,
   Brain,
   Code,
   Network,
@@ -77,7 +78,24 @@ export default function RoadmapHub() {
       "description": "Autonomous agents and multi-agent systems",
       "topics": ["Agent-based Modeling", "Reinforcement Learning", "Multi-agent Systems", "Autonomy & Decision-making"],
       "path": "/roadmaps/agentic-ai-developer"
+    },
+    {
+      id: "cse_foundation",
+      title: "Computer Science & Engineering (CSE)",
+      icon: Laptop,
+      color: "from-purple-500 to-pink-500",
+      description: "Core foundation of programming, systems, and software development",
+      topics: [
+        "Programming Fundamentals",
+        "Data Structures & Algorithms",
+        "Operating Systems",
+        "Computer Networks",
+        "Database Management Systems",
+        "Software Engineering"
+      ],
+      path: "/roadmaps/cse-foundation"
     }
+    
   ];
 
   return (
