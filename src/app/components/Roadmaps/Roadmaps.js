@@ -8,6 +8,7 @@ import {
   Code,
   Network,
   Cpu,
+  Globe,
   Server
 } from 'lucide-react';
 
@@ -25,6 +26,39 @@ export default function RoadmapHub() {
     //   topics: ["Portfolio Building", "Client Management", "Business Development", "Technical Skills"],
     //   path: "/roadmaps/freelance"
     // },
+    {
+      id: "std10_tech",
+      title: "Tech Roadmap after Std. 10th",
+      icon: Globe, // make sure to import `Globe` from lucide-react
+      color: "from-green-400 to-blue-500",
+      description: "Learn programming, web development, and freelancing after 10th class",
+      topics: [
+        "Digital Skills & Internet Tools",
+        "Python Programming",
+        "Logic Building",
+        "Web Development (HTML/CSS/JS)",
+        "Git & GitHub",
+        "Communication & Freelancing"
+      ],
+      path: "/roadmaps/Std10TechRoadmap"
+    },
+    {
+      id: "cse_foundation",
+      title: "Computer Science & Engineering (CSE)",
+      icon: Laptop,
+      color: "from-purple-500 to-pink-500",
+      description: "Core foundation of programming, systems, and software development",
+      topics: [
+        "Programming Fundamentals",
+        "Data Structures & Algorithms",
+        "Operating Systems",
+        "Computer Networks",
+        "Database Management Systems",
+        "Software Engineering"
+      ],
+      path: "/roadmaps/cse-foundation"
+    },
+    
     {
       id: "python",
       title: "Python Development",
@@ -79,22 +113,8 @@ export default function RoadmapHub() {
       "topics": ["Agent-based Modeling", "Reinforcement Learning", "Multi-agent Systems", "Autonomy & Decision-making"],
       "path": "/roadmaps/agentic-ai-developer"
     },
-    {
-      id: "cse_foundation",
-      title: "Computer Science & Engineering (CSE)",
-      icon: Laptop,
-      color: "from-purple-500 to-pink-500",
-      description: "Core foundation of programming, systems, and software development",
-      topics: [
-        "Programming Fundamentals",
-        "Data Structures & Algorithms",
-        "Operating Systems",
-        "Computer Networks",
-        "Database Management Systems",
-        "Software Engineering"
-      ],
-      path: "/roadmaps/cse-foundation"
-    }
+    
+    
     
   ];
 
