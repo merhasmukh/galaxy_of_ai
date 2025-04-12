@@ -2,12 +2,11 @@
 import React from "react";
 import {
   BarChart,
-  Briefcase,
-  ClipboardList,
-  Calendar,
-  Users,
+  Brain,
+
   LogOut,
   ChevronLeft,
+  Settings
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { Logout } from '../../utils/auth'
@@ -22,10 +21,12 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
 
   const navItems = [
     { icon: BarChart, label: "Dashboard", href: "/user/dashboard" },
-    { icon: Briefcase, label: "Projects", href: "/user/projects" },
-    { icon: ClipboardList, label: "Tasks", href: "/user/tasks" },
-    { icon: Calendar, label: "Hour Tracking", href: "/user/hour-track" },
-    { icon: Users, label: "Team", href: "/user/teams" },
+    { icon: Brain, label: "AI", href: "/user/ai" },
+
+    // { icon: Briefcase, label: "Projects", href: "/user/projects" },
+    // { icon: ClipboardList, label: "Tasks", href: "/user/tasks" },
+    // { icon: Calendar, label: "Hour Tracking", href: "/user/hour-track" },
+    // { icon: Users, label: "Team", href: "/user/teams" },
   ];
 
   return (
@@ -91,15 +92,28 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
         </nav>
 
         {/* Logout */}
-        <div className="p-4 border-t border-gray-700">
-  <button
-    onClick={Logout}
-    className="w-full flex items-center px-4 py-3 text-sm font-medium text-gray-300 rounded-lg hover:bg-gray-700 hover:text-white transition-colors group"
-  >
-    <LogOut className="w-5 h-5 mr-3 text-gray-400 group-hover:text-red-500 transition-colors" />
-    Logout
-  </button>
-</div>
+        <div className="p-4 border-t border-gray-700 space-y-2">
+         {/* User Settings */}
+          <a
+            href="/user/settings"
+            className={`w-full flex items-center px-4 py-3 text-sm font-medium text-gray-300 rounded-lg hover:bg-gray-700 hover:text-white transition-colors group ${
+              pathname === "/user/settings" ? "bg-gray-700 text-white" : ""
+            }`}
+          >
+          <Settings className="w-5 h-5 mr-3 text-gray-400 group-hover:text-blue-500 transition-colors" />
+          
+            Settings
+          </a>
+
+          {/* Logout */}
+          <button
+            onClick={Logout}
+            className="w-full flex items-center px-4 py-3 text-sm font-medium text-gray-300 rounded-lg hover:bg-gray-700 hover:text-white transition-colors group"
+          >
+            <LogOut className="w-5 h-5 mr-3 text-gray-400 group-hover:text-red-500 transition-colors" />
+            Logout
+          </button>
+        </div>
       </aside>
     </>
   );

@@ -124,7 +124,7 @@ const UserLogin: React.FC = () => {
               height={100} 
             />
           </div>
-          <h2 className="text-3xl font-bold text-center mb-6 text-orange-400">
+          <h2 className="text-3xl font-bold text-center mb-6 text-blue-400">
             Welcome Back
           </h2>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -174,7 +174,7 @@ const UserLogin: React.FC = () => {
 
             <button 
               type="submit" 
-              className="w-full bg-gradient-to-r from-orange-400 to-orange-500 text-black font-semibold py-3 rounded-full hover:from-orange-500 hover:to-orange-600 transition-all duration-300 transform hover:scale-105 glow-effect"
+              className="w-full bg-gradient-to-r from-blue-400 to-blue-500 text-black font-semibold py-3 rounded-full hover:from-blue-500 hover:to-blue-600 transition-all duration-300 transform hover:scale-105 glow-effect"
             >
               Sign In
             </button>
@@ -189,20 +189,18 @@ const UserLogin: React.FC = () => {
 
           </form>
           <div className="mt-6 text-center font-semibold text-gray-300">
-              Don&apos;t have an account? 
-              <Link
-                href="/user/signup" 
-                className="text-orange-400 font-semibold ml-2 hover:underline mb-2"
-              >
+            Don&apos;t have an account?
+            <Link href="/user/register">
+              <span className="text-blue-400 font-semibold ml-2 hover:underline cursor-pointer">
                 Sign Up Here
-              </Link>
-              
+              </span>
+            </Link>
           </div>
           <div className="mt-2 text-center font-semibold text-gray-300">
               Forgot Password? 
               <Link 
                 href="/user/reset-password" 
-                className="text-orange-400 font-semibold ml-2 hover:underline mb-2"
+                className="text-blue-400 font-semibold ml-2 hover:underline mb-2"
               >
                 Reset Password
               </Link>

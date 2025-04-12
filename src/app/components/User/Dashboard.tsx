@@ -2,29 +2,15 @@
 import React from 'react';
 import { 
   PlusCircle, 
-  Briefcase,
   ClipboardList,
   Calendar,
-  Users,
-  TrendingUp,
-  Clock,
-  CheckCircle2,
+
 } from 'lucide-react';
 
 
-function Dashboard() {
+function Dashboard()  {
 
-  const recentActivity = [
-    { id: 1, type: 'completed', task: 'API Integration', time: '2 hours ago' },
-    { id: 2, type: 'pending', task: 'Database Migration', time: '5 hours ago' },
-    { id: 3, type: 'completed', task: 'UI Design Review', time: '1 day ago' },
-  ];
 
-  const upcomingDeadlines = [
-    { id: 1, project: 'E-commerce Platform', deadline: '2024-03-25', progress: 75 },
-    { id: 2, project: 'Mobile App Development', deadline: '2024-04-01', progress: 45 },
-    { id: 3, project: 'Cloud Migration', deadline: '2024-04-15', progress: 30 },
-  ];
 
   return (
     <div className="flex h-screen bg-gray-900">      
@@ -34,7 +20,7 @@ function Dashboard() {
         {/* Main Content */}
         <main className="flex-1 overflow-y-auto bg-gray-900 p-4">
           {/* Stats Overview */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+          {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
             <div className="bg-gray-800 rounded-lg shadow-lg p-6 border border-gray-700">
               <div className="flex items-center justify-between">
                 <h3 className="text-gray-400 text-sm font-medium">Total Projects</h3>
@@ -67,7 +53,7 @@ function Dashboard() {
               <p className="text-2xl font-bold text-white mt-2">92%</p>
               <p className="text-sm text-green-500 mt-2">↑ 12% from last month</p>
             </div>
-          </div>
+          </div> */}
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Quick Actions */}
@@ -90,7 +76,7 @@ function Dashboard() {
             </div>
 
             {/* Recent Activity */}
-            <div className="bg-gray-800 rounded-lg shadow-lg p-6 border border-gray-700">
+            {/* <div className="bg-gray-800 rounded-lg shadow-lg p-6 border border-gray-700">
               <h3 className="text-lg font-semibold text-white mb-4">Recent Activity</h3>
               <div className="space-y-4">
                 {recentActivity.map(activity => (
@@ -107,10 +93,10 @@ function Dashboard() {
                   </div>
                 ))}
               </div>
-            </div>
+            </div> */}
 
             {/* Upcoming Deadlines */}
-            <div className="bg-gray-800 rounded-lg shadow-lg p-6 border border-gray-700">
+            {/* <div className="bg-gray-800 rounded-lg shadow-lg p-6 border border-gray-700">
               <h3 className="text-lg font-semibold text-white mb-4">Upcoming Deadlines</h3>
               <div className="space-y-4">
                 {upcomingDeadlines.map(deadline => (
@@ -128,7 +114,7 @@ function Dashboard() {
                   </div>
                 ))}
               </div>
-            </div>
+            </div> */}
           </div>
         </main>
    
