@@ -19,12 +19,7 @@ export default function UserLayout({ children }: { children: React.ReactNode }) 
     return <>{children}</>;
   }
 
-  const user = {
-    name: "Alex Johnson",
-    role: "Senior Developer",
-    avatar:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  };
+
 
   return (
     <div className="flex h-screen bg-gray-900">
@@ -33,8 +28,7 @@ export default function UserLayout({ children }: { children: React.ReactNode }) 
         <Header
           sidebarOpen={sidebarOpen}
           toggleSidebar={() => setSidebarOpen(!sidebarOpen)}
-          title="Developer Panel"
-          user={user}
+          title="Dashboard"
         />
         <main className="flex-1 overflow-y-auto bg-gray-900 p-4">
           {children}

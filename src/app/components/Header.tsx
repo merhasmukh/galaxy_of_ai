@@ -45,6 +45,7 @@ const Header = () => {
         {/* Desktop Navbar */}
         <PopoverGroup className="hidden lg:flex lg:gap-x-8 items-center">
           <Link href="/" className="text-sm font-semibold text-white">Home</Link>
+          <Link href="/chat" className="text-sm font-semibold text-white">Chat</Link>
           <Link href="/roadmaps" className="text-sm font-semibold text-white">Roadmaps</Link>
           <Link href="/tools" className="text-sm font-semibold text-white">Tools</Link>
           <Link href="/blog" className="text-sm font-semibold text-white">Blog</Link>
@@ -84,6 +85,9 @@ const Header = () => {
           {/* Navigation Links */}
           <Link href="/" onClick={() => setMobileMenuOpen(false)} className="w-full text-lg font-semibold text-white text-center py-3 hover:bg-gray-800 rounded-lg">
             Home
+          </Link>
+          <Link href="/chat" onClick={() => setMobileMenuOpen(false)} className="w-full text-lg font-semibold text-white text-center py-3 hover:bg-gray-800 rounded-lg">
+            Chat
           </Link>
           <Link href="/roadmaps" onClick={() => setMobileMenuOpen(false)} className="w-full text-lg font-semibold text-white text-center py-3 hover:bg-gray-800 rounded-lg">
             Roadmaps
