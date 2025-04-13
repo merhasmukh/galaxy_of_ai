@@ -2,7 +2,7 @@
 "use client"
 
 import { useState, useRef, useEffect } from "react"
-import ReactMarkdown from "react-markdown"
+import MarkdownMessage from "./MarkdownMessage"; // adjust path as needed
 
 interface Message {
   text: string
@@ -38,6 +38,7 @@ export default function UserAI({ accessToken }: UserAIProps) {
   const [currentChat, setCurrentChat] = useState<string>("")
   const chatWindowRef = useRef<HTMLDivElement>(null)
 
+  
   useEffect(() => {
     const fetchChats = async () => {
       if (!accessToken) return
@@ -171,14 +172,14 @@ export default function UserAI({ accessToken }: UserAIProps) {
       {/* Main Chat Section */}
       <div className="flex flex-col flex-grow bg-gradient-to-br from-[#0F172A] to-[#1E293B] text-gray-100 overflow-hidden">
         <div className="flex flex-col h-full px-4 sm:px-6 md:px-8">
-        <div
+        {/* <div
           ref={chatWindowRef}
           className="flex-grow overflow-y-auto p-4 bg-gray-900 rounded-2xl shadow-md"
         >
           {messages.map((message, index) => (
             <div key={index} className={`mb-2 flex ${message.isUser ? 'justify-end' : 'justify-start'}`}>
-              <div className="max-w-xs sm:max-w-md">
-                <span className={`block p-3 rounded-lg ${message.isUser ? 'bg-blue-400 text-[#0f1729]' : 'bg-gray-700 text-white'}`}>
+            <div className="max-w-full sm:max-w-2xl lg:max-w-3xl">
+            <span className={`block p-3 rounded-lg ${message.isUser ? 'bg-blue-400 text-[#0f1729]' : 'bg-gray-700 text-white'}`}>
                   <div className="prose prose-invert">
                     <ReactMarkdown>{message.text}</ReactMarkdown>
                   </div>
@@ -195,7 +196,43 @@ export default function UserAI({ accessToken }: UserAIProps) {
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
+
+<div
+  ref={chatWindowRef}
+  className="flex-grow overflow-y-auto p-4 bg-gray-900 rounded-2xl shadow-md"
+>
+  {messages.map((message, index) => (
+    <div
+      key={index}
+      className={`mb-2 flex ${message.isUser ? "justify-end" : "justify-start"}`}
+    >
+      <div className="max-w-full sm:max-w-2xl lg:max-w-3xl">
+        <span
+          className={`block p-3 rounded-lg whitespace-pre-wrap ${
+            message.isUser
+              ? "bg-blue-400 text-[#0f1729]"
+              : "bg-gray-700 text-white"
+          }`}
+        >
+          <div className="prose prose-invert max-w-none">
+          <MarkdownMessage text={message.text} />
+
+          </div>
+        </span>
+        {message.timestamp && (
+          <span className="text-xs text-gray-400 block mt-1 text-right">
+            {new Date(message.timestamp).toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+              hour12: true,
+            })}
+          </span>
+        )}
+      </div>
+    </div>
+  ))}
+</div>
 
 
           <form
