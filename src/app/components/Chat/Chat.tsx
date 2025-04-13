@@ -87,13 +87,13 @@ export default function Chat() {
   };
 
   return (
-    <div className="flex flex-col sm:flex-row h-screen w-full overflow-hidden">
+    <div className="flex flex-col sm:flex-row h-[calc(100vh-90px)] w-full overflow-hidden">
       {/* Sidebar */}
       <aside className="w-full sm:w-64 bg-gray-800 text-white p-4 flex flex-col overflow-y-auto sm:overflow-y-auto">
         <div className="mb-4">
           <button
             onClick={handleNewChat}
-            className="w-full bg-orange-400 text-[#0f1729] px-4 py-2 rounded-md font-bold hover:bg-orange-500"
+            className="w-full bg-blue-400 text-[#0f1729] px-4 py-2 rounded-md font-bold hover:bg-blue-500"
           >
             + New Chat
           </button>
@@ -120,7 +120,7 @@ export default function Chat() {
           >
             {messages.map((message, index) => (
               <div key={index} className={`mb-2 flex ${message.isUser ? 'justify-end' : 'justify-start'}`}>
-                <span className={`p-3 rounded-lg ${message.isUser ? 'bg-orange-400 text-[#0f1729]' : 'bg-gray-700 text-white'}`}>
+                <span className={`p-3 rounded-lg ${message.isUser ? 'bg-blue-400 text-[#0f1729]' : 'bg-gray-700 text-white'}`}>
                   <div className="prose prose-invert">
                     <ReactMarkdown>{message.text}</ReactMarkdown>
                   </div>
@@ -142,7 +142,7 @@ export default function Chat() {
             />
             <button
               type="submit"
-              className="bg-orange-400 text-[#0f1729] rounded-full px-6 py-3 font-semibold hover:bg-orange-500 transition-colors mb-4"
+              className="bg-blue-400 text-[#0f1729] rounded-full px-6 py-3 font-semibold hover:bg-blue-500 transition-colors mb-4"
             >
               Send
             </button>

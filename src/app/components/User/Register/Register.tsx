@@ -20,7 +20,7 @@ interface Errors {
   [key: string]: string;
 }
 
-const UserSignUp: React.FC = () => {
+const UserRegister: React.FC = () => {
   const router = useRouter();
  
   const formFields = ["name", "email", "phone", "dob", "password", "confirmPassword"] as const;
@@ -75,7 +75,7 @@ const UserSignUp: React.FC = () => {
 
     try {
       await axios.post(
-        `${NEXT_PUBLIC_BE_API_URL}/auth/user_signup/`,
+        `${NEXT_PUBLIC_BE_API_URL}/auth/user_register/`,
         formData
       );
 
@@ -106,7 +106,7 @@ const UserSignUp: React.FC = () => {
             className="logo-hover"
           />
         </div>
-        <h2 className="text-3xl font-bold text-center mb-6 text-orange-400">
+        <h2 className="text-3xl font-bold text-center mb-6 text-blue-400">
           Create an Account
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -146,7 +146,7 @@ const UserSignUp: React.FC = () => {
           ))}
           <button 
             type="submit" 
-            className="w-full bg-gradient-to-r from-orange-400 to-orange-500 text-black font-semibold py-3 rounded-full hover:from-orange-500 hover:to-orange-600 transition-all duration-300 transform hover:scale-105 glow-effect"
+            className="w-full bg-gradient-to-r from-blue-400 to-blue-500 text-black font-semibold py-3 rounded-full hover:from-blue-500 hover:to-blue-600 transition-all duration-300 transform hover:scale-105 glow-effect"
           >
             Sign Up
           </button>
@@ -156,7 +156,7 @@ const UserSignUp: React.FC = () => {
           Already have an account? 
           <a 
             href="/user/login" 
-            className="text-orange-400 ml-2 hover:underline"
+            className="text-blue-400 ml-2 hover:underline"
           >
             Login Here
           </a>
@@ -166,4 +166,4 @@ const UserSignUp: React.FC = () => {
   );
 };
 
-export default UserSignUp;
+export default UserRegister;

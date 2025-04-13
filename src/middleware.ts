@@ -15,7 +15,6 @@ export function middleware(req: NextRequest) {
 
   // ✅ Check for custom accessToken (JWT)
   const accessToken = req.cookies.get("accessToken")?.value;
-
   // ✅ Check for next-auth session cookies
   const hasNextAuthSession = nextAuthSessionCookie.some((name) =>
     req.cookies.has(name)

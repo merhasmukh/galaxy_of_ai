@@ -28,6 +28,8 @@ function LayoutContent({ children }: { children: React.ReactNode }) {
     // Check if JWT accessToken exists in cookies
     setHasJwt(document.cookie.includes("accessToken="));
     const user=localStorage.getItem("user");
+
+
     if  (user !== null) {
       setHasJwt(true);
     }
@@ -36,7 +38,13 @@ function LayoutContent({ children }: { children: React.ReactNode }) {
   }, []);
 
   const isLoggedIn = session || hasJwt; // User is logged in if NextAuth or JWT is present
-
+  useEffect(() => {
+    const userIsOnUserPage = window.location.pathname.startsWith("/user");
+  
+    if (!loading && isLoggedIn && !userIsOnUserPage) {
+      window.location.href = "/user/dashboard";
+    }
+  }, [loading, isLoggedIn]);
   return (
     <html lang="en">
       <head>
@@ -64,7 +72,12 @@ function LayoutContent({ children }: { children: React.ReactNode }) {
       <body>
         {/* Show loading state until authentication is checked */}
         {(loading || status === "loading") ? (
-          <div>Loading...</div>
+          <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-[#0F172A] to-[#1E293B]">
+          <div className="flex flex-col items-center gap-4">
+            <div className="w-16 h-16 border-4 border-blue-400 border-dashed rounded-full animate-spin"></div>
+            <p className="text-gray-300 font-semibold text-lg animate-pulse">Loading...</p>
+          </div>
+        </div>
         ) : (
           <>
             {!isLoggedIn && <Header />}

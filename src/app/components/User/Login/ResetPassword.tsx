@@ -61,7 +61,7 @@ const ResetPassword: React.FC = () => {
           <div className="flex justify-center mb-8">
             <Image src="/galaxy-of-ai-logo.png" alt="Galaxy Of AI Logo" width={200} height={100} />
           </div>
-          <h2 className="text-3xl font-bold text-center mb-6 text-orange-400">Reset Password</h2>
+          <h2 className="text-3xl font-bold text-center mb-6 text-blue-400">Reset Password</h2>
 
           {!isLinkSent ? (
 
@@ -83,7 +83,7 @@ const ResetPassword: React.FC = () => {
               </div>
 
               <div className="font-semibold text-black-500 bg-gray mx-auto mb-4">
-              <button type="submit" className="w-full bg-gradient-to-r from-orange-400 to-orange-500 text-black font-semibold py-3 rounded-full hover:from-orange-500 hover:to-orange-600 transition-all duration-300 transform hover:scale-105 glow-effect">
+              <button type="submit" className="w-full bg-gradient-to-r from-blue-400 to-blue-500 text-black font-semibold py-3 rounded-full hover:from-blue-500 hover:to-blue-600 transition-all duration-300 transform hover:scale-105 glow-effect">
                 Send Reset Link
               </button>
 
@@ -100,7 +100,7 @@ const ResetPassword: React.FC = () => {
 
           {!isLinkSent && (
             <p className="text-center text-gray-300 font-semibold">
-              Remembered your password? <a href="/user/login" className="text-amber-500 ml-2 hover:underline font-semibold">Login Here</a>
+              Remembered your password? <a href="/user/login" className="text-blue-500 ml-2 hover:underline font-semibold">Login Here</a>
             </p>
           )}
         </div>
