@@ -28,6 +28,8 @@ function LayoutContent({ children }: { children: React.ReactNode }) {
     // Check if JWT accessToken exists in cookies
     setHasJwt(document.cookie.includes("accessToken="));
     const user=localStorage.getItem("user");
+
+
     if  (user !== null) {
       setHasJwt(true);
     }
@@ -36,7 +38,13 @@ function LayoutContent({ children }: { children: React.ReactNode }) {
   }, []);
 
   const isLoggedIn = session || hasJwt; // User is logged in if NextAuth or JWT is present
-
+  useEffect(() => {
+    const userIsOnUserPage = window.location.pathname.startsWith("/user");
+  
+    if (!loading && isLoggedIn && !userIsOnUserPage) {
+      window.location.href = "/user/dashboard";
+    }
+  }, [loading, isLoggedIn]);
   return (
     <html lang="en">
       <head>
