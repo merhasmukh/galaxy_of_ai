@@ -1,29 +1,39 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Sidebar from "@/app/components/User/Sidebar";
 import Header from "@/app/components/User/Header";
 
 export default function UserLayout({ children }: { children: React.ReactNode }) {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
   const pathname = usePathname();
+  const [sidebarOpen, setSidebarOpen] = useState(true);
 
-  const authPages = [
-    "/user/login",
-    "/user/register",
-    "/user/reset-password",
-  ];
+  // 👇 Close sidebar by default on smaller screens (only once on mount)
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setSidebarOpen(false);
+      } else {
+        setSidebarOpen(true);
+      }
+    };
 
-  // ✅ If current route is in authPages → return only children (no layout)
+    handleResize(); // Initial check
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // ✅ Safe to do conditionals AFTER hooks
+  const authPages = ["/user/login", "/user/register", "/user/reset-password"];
   if (authPages.includes(pathname)) {
     return <>{children}</>;
   }
 
-
-
   return (
     <div className="flex h-screen bg-gray-900">
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+
       <div className="flex-1 flex flex-col min-h-screen overflow-hidden">
         <Header
           sidebarOpen={sidebarOpen}
