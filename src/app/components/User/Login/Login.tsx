@@ -4,7 +4,7 @@ import React, { useState, FormEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { toast } from "react-toastify";
-import { signIn } from "next-auth/react";
+import { signIn, getSession } from "next-auth/react";
 
 interface CustomError {
   response?: {
@@ -29,12 +29,19 @@ const UserLogin: React.FC = () => {
         toast.error("Google login failed. Please try again.");
       } else {
         toast.success("Google Signed in successfully! Redirecting...");
-      }
+        const session = await getSession();
+          if (session?.userData) {
+            localStorage.setItem("user", JSON.stringify(session.userData));
+          }
+      } 
       
-    } catch {
-      toast.error("An unexpected error occurred. Please try again.");
-    }
-  };
+    }catch (error) {
+      console.error("Google login error:", error);
+      toast.error("An unexpected error occurred. Please try again."); 
+     
+  }};
+
+
   
 
   const validateEmail = (): boolean => {
