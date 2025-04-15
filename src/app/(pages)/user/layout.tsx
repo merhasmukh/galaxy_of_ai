@@ -5,6 +5,7 @@ import Sidebar from "@/app/components/User/Sidebar";
 import Header from "@/app/components/User/Header";
 
 export default function UserLayout({ children }: { children: React.ReactNode }) {
+  
   const pathname = usePathname();
   const [sidebarOpen, setSidebarOpen] = useState(true);
 

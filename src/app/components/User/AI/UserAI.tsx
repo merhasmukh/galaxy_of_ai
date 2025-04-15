@@ -2,7 +2,10 @@
 "use client"
 
 import { useState, useRef, useEffect } from "react"
-import MarkdownMessage from "./MarkdownMessage"; // adjust path as needed
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeHighlight from "rehype-highlight"; // Optional: for code highlighting
+import "highlight.js/styles/github-dark.css";    // Optional: Code block theme
 
 interface Message {
   text: string
@@ -172,31 +175,7 @@ export default function UserAI({ accessToken }: UserAIProps) {
       {/* Main Chat Section */}
       <div className="flex flex-col flex-grow bg-gradient-to-br from-[#0F172A] to-[#1E293B] text-gray-100 overflow-hidden">
         <div className="flex flex-col h-full px-4 sm:px-6 md:px-8">
-        {/* <div
-          ref={chatWindowRef}
-          className="flex-grow overflow-y-auto p-4 bg-gray-900 rounded-2xl shadow-md"
-        >
-          {messages.map((message, index) => (
-            <div key={index} className={`mb-2 flex ${message.isUser ? 'justify-end' : 'justify-start'}`}>
-            <div className="max-w-full sm:max-w-2xl lg:max-w-3xl">
-            <span className={`block p-3 rounded-lg ${message.isUser ? 'bg-blue-400 text-[#0f1729]' : 'bg-gray-700 text-white'}`}>
-                  <div className="prose prose-invert">
-                    <ReactMarkdown>{message.text}</ReactMarkdown>
-                  </div>
-                </span>
-                {message.timestamp && (
-                  <span className="text-xs text-gray-400 block mt-1 text-right">
-                    {new Date(message.timestamp).toLocaleTimeString([], {
-                      hour: "2-digit",
-                      minute: "2-digit",
-                      hour12: true,
-                    })}
-                  </span>
-                )}
-              </div>
-            </div>
-          ))}
-        </div> */}
+        
 
 <div
   ref={chatWindowRef}
@@ -207,26 +186,32 @@ export default function UserAI({ accessToken }: UserAIProps) {
       key={index}
       className={`mb-3 flex ${message.isUser ? "justify-end" : "justify-start"}`}
     >
+  
       <div className="max-w-full sm:max-w-2xl lg:max-w-3xl space-y-1">
-        <div
-          className={`p-3 rounded-lg whitespace-pre-wrap 
-            ${message.isUser ? "bg-blue-400 text-[#0f1729]" : "bg-gray-700 text-white"}
-            prose prose-sm dark:prose-invert max-w-none
-            prose-p:mb-1 prose-li:mb-0.5 prose-pre:my-3 prose-ul:pl-5 prose-code:px-1 leading-snug
-          `}
+      <div
+        className={`p-3 rounded-lg whitespace-pre-wrap 
+          ${message.isUser ? "bg-blue-400 text-[#0f1729]" : "bg-gray-700 text-white"}
+          prose prose-sm dark:prose-invert max-w-none
+          prose-p:mb-1 prose-li:mb-0.5 prose-pre:my-3 prose-ul:pl-5 prose-code:px-1 leading-snug
+        `}
+      >
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
+          rehypePlugins={[rehypeHighlight]} // Optional
         >
-          <MarkdownMessage text={message.text} />
-        </div>
-        {message.timestamp && (
-          <div className="text-xs text-gray-400 text-right">
-            {new Date(message.timestamp).toLocaleTimeString([], {
-              hour: "2-digit",
-              minute: "2-digit",
-              hour12: true,
-            })}
-          </div>
-        )}
+          {message.text}
+        </ReactMarkdown>
       </div>
+      {message.timestamp && (
+        <div className="text-xs text-gray-400 text-right">
+          {new Date(message.timestamp).toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: true,
+          })}
+    </div>
+  )}
+</div>
     </div>
   ))}
 </div>
