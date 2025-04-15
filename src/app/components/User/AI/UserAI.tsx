@@ -205,34 +205,32 @@ export default function UserAI({ accessToken }: UserAIProps) {
   {messages.map((message, index) => (
     <div
       key={index}
-      className={`mb-2 flex ${message.isUser ? "justify-end" : "justify-start"}`}
+      className={`mb-3 flex ${message.isUser ? "justify-end" : "justify-start"}`}
     >
-      <div className="max-w-full sm:max-w-2xl lg:max-w-3xl">
-        <span
-          className={`block p-3 rounded-lg whitespace-pre-wrap ${
-            message.isUser
-              ? "bg-blue-400 text-[#0f1729]"
-              : "bg-gray-700 text-white"
-          }`}
+      <div className="max-w-full sm:max-w-2xl lg:max-w-3xl space-y-1">
+        <div
+          className={`p-3 rounded-lg whitespace-pre-wrap 
+            ${message.isUser ? "bg-blue-400 text-[#0f1729]" : "bg-gray-700 text-white"}
+            prose prose-sm dark:prose-invert max-w-none
+            prose-p:mb-1 prose-li:mb-0.5 prose-pre:my-3 prose-ul:pl-5 prose-code:px-1 leading-snug
+          `}
         >
-          <div className="prose prose-invert max-w-none">
           <MarkdownMessage text={message.text} />
-
-          </div>
-        </span>
+        </div>
         {message.timestamp && (
-          <span className="text-xs text-gray-400 block mt-1 text-right">
+          <div className="text-xs text-gray-400 text-right">
             {new Date(message.timestamp).toLocaleTimeString([], {
               hour: "2-digit",
               minute: "2-digit",
               hour12: true,
             })}
-          </span>
+          </div>
         )}
       </div>
     </div>
   ))}
 </div>
+
 
 
           <form
