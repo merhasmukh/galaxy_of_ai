@@ -17,6 +17,7 @@
     "framer-motion": "^11.15.0",
     "fs.promises": "^0.1.2",
     "heroicons": "^2.2.0",
+    "highlight.js": "^11.11.1",
     "js-cookie": "^3.0.5",
     "lucide-react": "^0.469.0",
     "next": "15.2.4",
@@ -28,6 +29,7 @@
     "react-social-icons": "^6.18.0",
     "react-syntax-highlighter": "^15.6.1",
     "react-toastify": "^11.0.5",
+    "rehype-highlight": "^7.0.2",
     "rehype-raw": "^7.0.0",
     "remark-gfm": "^4.0.1",
     "tiktoken": "^1.0.18"
