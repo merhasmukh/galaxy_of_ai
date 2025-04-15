@@ -43,7 +43,7 @@ const handler = NextAuth({
           token.userId = data.user_id;
           token.userData = {
             email: data.email,
-            username: data.username,
+            name: data.username,
             profile_image: data.profile_image,
             phone: data.phone || "",
             dob: data.dob || "",
