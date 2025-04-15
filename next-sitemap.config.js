@@ -1,14 +1,14 @@
 module.exports = {
-    siteUrl: 'https://galaxyofai.com', // Replace with your website's URL
-    generateRobotsTxt: true,          // Generate a robots.txt file
-    changefreq: 'daily',              // Frequency of updates (e.g., daily, weekly)
-    priority: 0.7,                    // Priority for each page
-    sitemapSize: 5000,                // Max entries per sitemap file
-    exclude: [],        // Add any paths you want to exclude
-    robotsTxtOptions: {
-      policies: [
-        { userAgent: '*', allow: '/' }, // Allow all bots to crawl the site
-      ],
-    },
-  };
-  
+  siteUrl: 'https://galaxyofai.com',
+  generateRobotsTxt: true,
+  changefreq: 'daily',
+  priority: 0.7,
+  sitemapSize: 5000,
+  exclude: [],
+  autoLastmod: false, 
+  robotsTxtOptions: {
+    policies: [
+      { userAgent: '*', allow: '/' },
+    ],
+  },
+};
