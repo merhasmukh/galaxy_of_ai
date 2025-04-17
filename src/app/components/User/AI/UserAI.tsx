@@ -26,11 +26,12 @@ interface UserAIProps {
 }
 
 interface ChatData {
-  id: string
-  chat_id: string
-  timestamp: string
-  name?: string;         // New
-  description?: string;  // New
+  id: string;
+  chat_id: string;
+  timestamp: string;
+  name?: string;       
+  description?: string;  
+  language?: string;   
   }
 
 
@@ -43,11 +44,15 @@ export default function UserAI({ accessToken }: UserAIProps) {
   const chatWindowRef = useRef<HTMLDivElement>(null)
   const [chatName, setChatName] = useState("");
   const [chatDescription, setChatDescription] = useState("");
+  const [chatLanguage, setChatLanguage] = useState("English");
+
 
   useEffect(() => {
     const selectedChat = chatList.find(chat => chat.chat_id === currentChat);
     setChatName(selectedChat?.name || "");
     setChatDescription(selectedChat?.description || "");
+    setChatLanguage(selectedChat?.language || "");
+
   }, [currentChat]);
   
   const handleSaveChatInfo = async () => {
@@ -63,6 +68,8 @@ export default function UserAI({ accessToken }: UserAIProps) {
         body: JSON.stringify({
           name: chatName,
           description: chatDescription,
+          language: chatLanguage,
+
         }),
       });
   
@@ -71,7 +78,7 @@ export default function UserAI({ accessToken }: UserAIProps) {
   
       // Update local chatList with new name/description
       setChatList(prev => prev.map(chat =>
-        chat.chat_id === currentChat ? { ...chat, name: chatName, description: chatDescription } : chat
+        chat.chat_id === currentChat ? { ...chat, name: chatName, description: chatDescription,language: chatLanguage } : chat
       ));
     } catch (err) {
       console.error("Failed to save chat info:", err);
@@ -187,27 +194,42 @@ export default function UserAI({ accessToken }: UserAIProps) {
       {/* Sidebar */}
       <aside className="w-full sm:w-64 bg-gray-800 text-white p-4 flex flex-col overflow-y-auto sm:overflow-y-auto">
       <div className="mb-4">
-          <input
-            type="text"
-            placeholder="Chat Name"
-            value={chatName}
-            onChange={(e) => setChatName(e.target.value)}
-            className="w-full bg-gray-700 text-white p-2 rounded mb-4"
-          />
-          <textarea
-            placeholder="Chat Description"
-            value={chatDescription}
-            onChange={(e) => setChatDescription(e.target.value)}
-            rows={2}
-            className="w-full bg-gray-700 text-white p-2 rounded resize-none mb-4"
-          />
-          <button
-            onClick={handleSaveChatInfo}
-            className="w-full bg-blue-400 text-[#0f1729] px-4 py-2 rounded-md font-bold hover:bg-blue-500"
-          >
-            Save Chat Info
-          </button>
-        </div>
+  <input
+    type="text"
+    placeholder="Chat Name"
+    value={chatName}
+    onChange={(e) => setChatName(e.target.value)}
+    className="w-full bg-gray-700 text-white p-2 rounded mb-4"
+  />
+
+  <textarea
+    placeholder="Chat Description"
+    value={chatDescription}
+    onChange={(e) => setChatDescription(e.target.value)}
+    rows={2}
+    className="w-full bg-gray-700 text-white p-2 rounded resize-none mb-4"
+  />
+
+  <select
+    value={chatLanguage}
+    onChange={(e) => setChatLanguage(e.target.value)}
+    className="w-full bg-gray-700 text-white p-2 rounded mb-4"
+  >
+    <option value="english">English</option>
+    <option value="hindi">Hindi</option>
+    <option value="gujarati">Gujarati</option>
+    <option value="hinglish">Hinglish</option>
+
+  </select>
+
+  <button
+    onClick={handleSaveChatInfo}
+    className="w-full bg-blue-400 text-[#0f1729] px-4 py-2 rounded-md font-bold hover:bg-blue-500"
+  >
+    Save Chat Info
+  </button>
+</div>
+
 
         <div className="mb-4">
           <button
@@ -224,7 +246,11 @@ export default function UserAI({ accessToken }: UserAIProps) {
             onClick={() => setCurrentChat(chat.chat_id)}
             className={`cursor-pointer px-4 py-2 rounded-md ${currentChat === chat.chat_id ? "bg-gray-700" : "hover:bg-gray-700"}`}
           >
-        {chat.name ? chat.name : `Chat ${idx + 1}`} — {new Date(chat.timestamp).toLocaleString()}
+{chat.name ? chat.name : `Chat ${idx + 1}`} — {new Date(chat.timestamp).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+})}
         </li>
         ))}
 
