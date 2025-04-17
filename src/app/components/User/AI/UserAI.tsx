@@ -29,8 +29,9 @@ interface ChatData {
   id: string
   chat_id: string
   timestamp: string
-  // Add other properties as needed
-}
+  name?: string;         // New
+  description?: string;  // New
+  }
 
 
 export default function UserAI({ accessToken }: UserAIProps) {
@@ -40,8 +41,43 @@ export default function UserAI({ accessToken }: UserAIProps) {
   const [chatList, setChatList] = useState<ChatData[]>([])
   const [currentChat, setCurrentChat] = useState<string>("")
   const chatWindowRef = useRef<HTMLDivElement>(null)
+  const [chatName, setChatName] = useState("");
+  const [chatDescription, setChatDescription] = useState("");
 
+  useEffect(() => {
+    const selectedChat = chatList.find(chat => chat.chat_id === currentChat);
+    setChatName(selectedChat?.name || "");
+    setChatDescription(selectedChat?.description || "");
+  }, [currentChat]);
   
+  const handleSaveChatInfo = async () => {
+    if (!currentChat || !chatName.trim()) return;
+  
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BE_API_URL}/users/chat/update/${currentChat}/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify({
+          name: chatName,
+          description: chatDescription,
+        }),
+      });
+  
+      if (!res.ok) throw new Error("Failed to update chat info");
+  
+  
+      // Update local chatList with new name/description
+      setChatList(prev => prev.map(chat =>
+        chat.chat_id === currentChat ? { ...chat, name: chatName, description: chatDescription } : chat
+      ));
+    } catch (err) {
+      console.error("Failed to save chat info:", err);
+    }
+  };
+   
   useEffect(() => {
     const fetchChats = async () => {
       if (!accessToken) return
@@ -150,6 +186,29 @@ export default function UserAI({ accessToken }: UserAIProps) {
     <div className="flex flex-col sm:flex-row h-[calc(100vh-90px)] w-full overflow-hidden">
       {/* Sidebar */}
       <aside className="w-full sm:w-64 bg-gray-800 text-white p-4 flex flex-col overflow-y-auto sm:overflow-y-auto">
+      <div className="mb-4">
+          <input
+            type="text"
+            placeholder="Chat Name"
+            value={chatName}
+            onChange={(e) => setChatName(e.target.value)}
+            className="w-full bg-gray-700 text-white p-2 rounded mb-4"
+          />
+          <textarea
+            placeholder="Chat Description"
+            value={chatDescription}
+            onChange={(e) => setChatDescription(e.target.value)}
+            rows={2}
+            className="w-full bg-gray-700 text-white p-2 rounded resize-none mb-4"
+          />
+          <button
+            onClick={handleSaveChatInfo}
+            className="w-full bg-blue-400 text-[#0f1729] px-4 py-2 rounded-md font-bold hover:bg-blue-500"
+          >
+            Save Chat Info
+          </button>
+        </div>
+
         <div className="mb-4">
           <button
             onClick={handleNewChat}
@@ -165,56 +224,57 @@ export default function UserAI({ accessToken }: UserAIProps) {
             onClick={() => setCurrentChat(chat.chat_id)}
             className={`cursor-pointer px-4 py-2 rounded-md ${currentChat === chat.chat_id ? "bg-gray-700" : "hover:bg-gray-700"}`}
           >
-            Chat {idx + 1} — {new Date(chat.timestamp).toLocaleString()}
-          </li>
+        {chat.name ? chat.name : `Chat ${idx + 1}`} — {new Date(chat.timestamp).toLocaleString()}
+        </li>
         ))}
 
         </ul>
+        
       </aside>
 
       {/* Main Chat Section */}
       <div className="flex flex-col flex-grow bg-gradient-to-br from-[#0F172A] to-[#1E293B] text-gray-100 overflow-hidden">
         <div className="flex flex-col h-full px-4 sm:px-6 md:px-8">
         
-
-<div
-  ref={chatWindowRef}
-  className="flex-grow overflow-y-auto p-4 bg-gray-900 rounded-2xl shadow-md"
->
-  {messages.map((message, index) => (
-    <div
-      key={index}
-      className={`mb-3 flex ${message.isUser ? "justify-end" : "justify-start"}`}
-    >
-  
-      <div className="max-w-full sm:max-w-2xl lg:max-w-3xl space-y-1">
-      <div
-        className={`p-3 rounded-lg whitespace-pre-wrap 
-          ${message.isUser ? "bg-blue-400 text-[#0f1729]" : "bg-gray-700 text-white"}
-          prose prose-sm dark:prose-invert max-w-none
-          prose-p:mb-1 prose-li:mb-0.5 prose-pre:my-3 prose-ul:pl-5 prose-code:px-1 leading-snug
-        `}
-      >
-        <ReactMarkdown
-          remarkPlugins={[remarkGfm]}
-          rehypePlugins={[rehypeHighlight]} // Optional
-        >
-          {message.text}
-        </ReactMarkdown>
-      </div>
-      {message.timestamp && (
-        <div className="text-xs text-gray-400 text-right">
-          {new Date(message.timestamp).toLocaleTimeString([], {
-            hour: "2-digit",
-            minute: "2-digit",
-            hour12: true,
-          })}
-    </div>
-  )}
-</div>
-    </div>
-  ))}
-</div>
+          
+          <div
+            ref={chatWindowRef}
+            className="flex-grow overflow-y-auto p-4 bg-gray-900 rounded-2xl shadow-md"
+          >
+            {messages.map((message, index) => (
+              <div
+                key={index}
+                className={`mb-3 flex ${message.isUser ? "justify-end" : "justify-start"}`}
+              >
+            
+                <div className="max-w-full sm:max-w-2xl lg:max-w-3xl space-y-1">
+                <div
+                  className={`p-3 rounded-lg whitespace-pre-wrap 
+                    ${message.isUser ? "bg-blue-400 text-[#0f1729]" : "bg-gray-700 text-white"}
+                    prose prose-sm dark:prose-invert max-w-none
+                    prose-p:mb-1 prose-li:mb-0.5 prose-pre:my-3 prose-ul:pl-5 prose-code:px-1 leading-snug
+                  `}
+                >
+                  <ReactMarkdown
+                    remarkPlugins={[remarkGfm]}
+                    rehypePlugins={[rehypeHighlight]} // Optional
+                  >
+                    {message.text}
+                  </ReactMarkdown>
+                </div>
+                {message.timestamp && (
+                  <div className="text-xs text-gray-400 text-right">
+                    {new Date(message.timestamp).toLocaleTimeString([], {
+                      hour: "2-digit",
+                      minute: "2-digit",
+                      hour12: true,
+                    })}
+              </div>
+            )}
+          </div>
+              </div>
+            ))}
+          </div>
 
 
 
