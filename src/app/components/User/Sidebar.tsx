@@ -3,10 +3,10 @@ import React from "react";
 import {
   BarChart,
   Brain,
-
   LogOut,
   ChevronLeft,
-  Settings
+  Settings,
+  // Wallet
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { Logout } from '../../utils/auth'
@@ -21,9 +21,10 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
 
   const navItems = [
     { icon: BarChart, label: "Dashboard", href: "/user/dashboard" },
-    { icon: Brain, label: "AI", href: "/user/ai" },
+    { icon: Brain, label: "AI Research", href: "/user/ai" },
+    { icon: Brain, label: "Resouces", href: "/user/resources" },
 
-    // { icon: Briefcase, label: "Projects", href: "/user/projects" },
+    // { icon: Wallet, label: "Money Management", href: "/user/money-management" },
     // { icon: ClipboardList, label: "Tasks", href: "/user/tasks" },
     // { icon: Calendar, label: "Hour Tracking", href: "/user/hour-track" },
     // { icon: Users, label: "Team", href: "/user/teams" },
