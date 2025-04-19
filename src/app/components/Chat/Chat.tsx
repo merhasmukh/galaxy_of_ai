@@ -5,7 +5,6 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight"; // Optional: for code highlighting
 import "highlight.js/styles/github-dark.css";    // Optional: Code block theme
-
 interface Message {
   text: string
   isUser: boolean
@@ -168,6 +167,7 @@ export default function Chat() {
           </form>
         </div>
       </div>
+
     </div>
   );
 }
