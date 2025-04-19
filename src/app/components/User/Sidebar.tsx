@@ -1,11 +1,13 @@
 "use client";
 import React from "react";
 import {
-  BarChart,
+  LayoutGrid,
+  FilePenLine,
   Brain,
   LogOut,
   ChevronLeft,
   Settings,
+  ClipboardList,
   // Wallet
 } from "lucide-react";
 import { usePathname } from "next/navigation";
@@ -20,12 +22,12 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   const pathname = usePathname();
 
   const navItems = [
-    { icon: BarChart, label: "Dashboard", href: "/user/dashboard" },
+    { icon: LayoutGrid, label: "Dashboard", href: "/user/dashboard" },
     { icon: Brain, label: "AI Research", href: "/user/ai" },
-    { icon: Brain, label: "Resouces", href: "/user/resources" },
+    { icon: FilePenLine, label: "Resouces", href: "/user/resources" },
 
     // { icon: Wallet, label: "Money Management", href: "/user/money-management" },
-    // { icon: ClipboardList, label: "Tasks", href: "/user/tasks" },
+    { icon: ClipboardList, label: "Work Logs", href: "/user/worklogs" },
     // { icon: Calendar, label: "Hour Tracking", href: "/user/hour-track" },
     // { icon: Users, label: "Team", href: "/user/teams" },
   ];
