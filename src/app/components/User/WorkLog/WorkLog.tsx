@@ -12,8 +12,10 @@ interface WorkLog {
   duration_hours: number;
   description: string;
 }
-
-function WorkLogManager() {
+interface WorkLogProps {
+  accessToken: string;
+}
+export default function WorkLogManager({ accessToken }: WorkLogProps) {
   const [workLogs, setWorkLogs] = useState<WorkLog[]>([]);
   const [date, setDate] = useState<string>("");
   const [startTime, setStartTime] = useState<string>("");
@@ -22,10 +24,22 @@ function WorkLogManager() {
   const [filterDate, setFilterDate] = useState<string>("");
 
   const fetchWorkLogs = async (filterByDate = "") => {
-    const url = filterByDate ? `${process.env.NEXT_PUBLIC_BE_API_URL}/users/worklogs/?date=${filterByDate}` : `${process.env.NEXT_PUBLIC_BE_API_URL}/users/worklogs/`;
-    const res = await axios.get(url);
-    setWorkLogs(res.data);
+    const url = filterByDate
+      ? `${process.env.NEXT_PUBLIC_BE_API_URL}/users/worklogs/?date=${filterByDate}`
+      : `${process.env.NEXT_PUBLIC_BE_API_URL}/users/worklogs/`;
+  
+    try {
+      const res = await axios.get(url, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      setWorkLogs(res.data);
+    } catch (error) {
+      console.error("Error fetching work logs:", error);
+    }
   };
+  
 
   const calculateDuration = (start: string, end: string): number => {
     const [startH, startM] = start.split(":").map(Number);
@@ -46,7 +60,13 @@ function WorkLogManager() {
       end_time: endTime,
       duration_hours,
       description,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
     });
+  
     setDate("");
     setStartTime("");
     setEndTime("");
@@ -63,10 +83,19 @@ function WorkLogManager() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="bg-gray-800 rounded-lg shadow-lg p-6 border border-gray-700">
           <h3 className="text-lg font-semibold text-white mb-4">Log Your Work</h3>
-          <input type="date" value={date} onChange={(e) => setDate(e.target.value)} className="w-full p-2 mb-2 rounded bg-gray-700 text-white" />
-          <input type="time" value={startTime} onChange={(e) => setStartTime(e.target.value)} className="w-full p-2 mb-2 rounded bg-gray-700 text-white" />
-          <input type="time" value={endTime} onChange={(e) => setEndTime(e.target.value)} className="w-full p-2 mb-2 rounded bg-gray-700 text-white" />
+
+          <label className="block text-sm text-white mb-1">Select Date</label>
+          <input type="date" value={date} onChange={(e) => setDate(e.target.value)} className="w-full p-2 mb-3 rounded bg-gray-700 text-white" />
+
+          <label className="block text-sm text-white mb-1">Select Start Time</label>
+          <input type="time" value={startTime} onChange={(e) => setStartTime(e.target.value)} className="w-full p-2 mb-3 rounded bg-gray-700 text-white" />
+
+          <label className="block text-sm text-white mb-1">Select End Time</label>
+          <input type="time" value={endTime} onChange={(e) => setEndTime(e.target.value)} className="w-full p-2 mb-3 rounded bg-gray-700 text-white" />
+
+          <label className="block text-sm text-white mb-1">Work Description</label>
           <textarea placeholder="What did you do?" value={description} onChange={(e) => setDescription(e.target.value)} rows={3} className="w-full p-2 mb-4 rounded bg-gray-700 text-white resize-none" />
+
           <button onClick={addWorkLog} className="w-full flex items-center justify-center px-4 py-2 bg-green-600 text-white rounded-lg shadow hover:bg-green-700 transition">
             <ClipboardList className="w-5 h-5 mr-2" /> Submit Log
           </button>
@@ -97,4 +126,3 @@ function WorkLogManager() {
   );
 }
 
-export default WorkLogManager;

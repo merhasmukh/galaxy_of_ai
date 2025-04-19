@@ -10,13 +10,13 @@ import "highlight.js/styles/github-dark.css";    // Optional: Code block theme
 interface Message {
   text: string
   isUser: boolean
-  timestamp?: string;
+  created_at?: string;
 
 }
 interface MessagePair {
   question: string;
   answer: string;
-  timestamp?: string;
+  created_at?: string;
 
 
 }
@@ -28,7 +28,7 @@ interface UserAIProps {
 interface ChatData {
   id: string;
   chat_id: string;
-  timestamp: string;
+  created_at: string;
   name?: string;       
   description?: string;  
   language?: string;   
@@ -128,8 +128,8 @@ export default function UserAI({ accessToken }: UserAIProps) {
       })
       const data = await res.json()
       const formattedMessages = (data.chats as MessagePair[]).flatMap((msg) => [
-        { text: msg.question, isUser: true, timestamp: msg.timestamp },
-        { text: msg.answer, isUser: false, timestamp: msg.timestamp },
+        { text: msg.question, isUser: true, timestamp: msg.created_at },
+        { text: msg.answer, isUser: false, timestamp: msg.created_at },
       ]);
       setMessages(formattedMessages)
     }
@@ -194,40 +194,45 @@ export default function UserAI({ accessToken }: UserAIProps) {
       {/* Sidebar */}
       <aside className="w-full sm:w-64 bg-gray-800 text-white p-4 flex flex-col overflow-y-auto sm:overflow-y-auto">
       <div className="mb-4">
-  <input
-    type="text"
-    placeholder="Chat Name"
-    value={chatName}
-    onChange={(e) => setChatName(e.target.value)}
-    className="w-full bg-gray-700 text-white p-2 rounded mb-4"
-  />
+      <label className="block text-sm text-white mb-1">Chat Bot Name:</label>
+      <input
+        type="text"
+        placeholder="Chat Name"
+        value={chatName}
+        onChange={(e) => setChatName(e.target.value)}
+        className="w-full bg-gray-700 text-white p-2 rounded mb-2"
+      />
+      <label className="block text-sm text-white mb-1">Project Description:</label>
 
-  <textarea
-    placeholder="Chat Description"
-    value={chatDescription}
-    onChange={(e) => setChatDescription(e.target.value)}
-    rows={2}
-    className="w-full bg-gray-700 text-white p-2 rounded resize-none mb-4"
-  />
+      <textarea
+        placeholder="Chat Description"
+        value={chatDescription}
+        onChange={(e) => setChatDescription(e.target.value)}
+        rows={2}
+        className="w-full bg-gray-700 text-white p-2 rounded resize-none mb-2"
+      />
 
-  <select
-    value={chatLanguage}
-    onChange={(e) => setChatLanguage(e.target.value)}
-    className="w-full bg-gray-700 text-white p-2 rounded mb-4"
-  >
-    <option value="english">English</option>
-    <option value="hindi">Hindi</option>
-    <option value="gujarati">Gujarati</option>
-    <option value="hinglish">Hinglish</option>
+      <label className="block text-sm text-white mb-1">Response Langauge:</label>
 
-  </select>
 
-  <button
-    onClick={handleSaveChatInfo}
-    className="w-full bg-blue-400 text-[#0f1729] px-4 py-2 rounded-md font-bold hover:bg-blue-500"
-  >
-    Save Chat Info
-  </button>
+      <select
+        value={chatLanguage}
+        onChange={(e) => setChatLanguage(e.target.value)}
+        className="w-full bg-gray-700 text-white p-2 rounded mb-2"
+      >
+        <option value="english">English</option>
+        <option value="hindi">Hindi</option>
+        <option value="gujarati">Gujarati</option>
+        <option value="hinglish">Hinglish</option>
+
+      </select>
+
+      <button
+        onClick={handleSaveChatInfo}
+        className="w-full bg-blue-400 text-[#0f1729] px-4 py-2 rounded-md font-bold hover:bg-blue-500"
+      >
+        Save Chat Info
+      </button>
 </div>
 
 
@@ -246,11 +251,11 @@ export default function UserAI({ accessToken }: UserAIProps) {
             onClick={() => setCurrentChat(chat.chat_id)}
             className={`cursor-pointer px-4 py-2 rounded-md ${currentChat === chat.chat_id ? "bg-gray-700" : "hover:bg-gray-700"}`}
           >
-{chat.name ? chat.name : `Chat ${idx + 1}`} — {new Date(chat.timestamp).toLocaleDateString('en-US', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric'
-})}
+      {chat.name ? chat.name : `Chat ${idx + 1}`} — {new Date(chat.created_at).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      })}
         </li>
         ))}
 
@@ -288,9 +293,9 @@ export default function UserAI({ accessToken }: UserAIProps) {
                     {message.text}
                   </ReactMarkdown>
                 </div>
-                {message.timestamp && (
+                {message.created_at && (
                   <div className="text-xs text-gray-400 text-right">
-                    {new Date(message.timestamp).toLocaleTimeString([], {
+                    {new Date(message.created_at).toLocaleTimeString([], {
                       hour: "2-digit",
                       minute: "2-digit",
                       hour12: true,
