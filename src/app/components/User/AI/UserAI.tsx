@@ -1,4 +1,3 @@
-
 "use client"
 
 import { useState, useRef, useEffect } from "react"
@@ -11,14 +10,12 @@ interface Message {
   text: string
   isUser: boolean
   created_at?: string;
-
 }
+
 interface MessagePair {
   question: string;
   answer: string;
   created_at?: string;
-
-
 }
 
 interface UserAIProps {
@@ -32,12 +29,10 @@ interface ChatData {
   name?: string;       
   description?: string;  
   language?: string;   
-  }
-
+}
 
 export default function UserAI({ accessToken }: UserAIProps) {
   const [messages, setMessages] = useState<Message[]>([])
-
   const [inputMessage, setInputMessage] = useState("")
   const [chatList, setChatList] = useState<ChatData[]>([])
   const [currentChat, setCurrentChat] = useState<string>("")
@@ -45,14 +40,13 @@ export default function UserAI({ accessToken }: UserAIProps) {
   const [chatName, setChatName] = useState("");
   const [chatDescription, setChatDescription] = useState("");
   const [chatLanguage, setChatLanguage] = useState("English");
-
+  const [showSidebar, setShowSidebar] = useState(false);
 
   useEffect(() => {
     const selectedChat = chatList.find(chat => chat.chat_id === currentChat);
     setChatName(selectedChat?.name || "");
     setChatDescription(selectedChat?.description || "");
     setChatLanguage(selectedChat?.language || "");
-
   }, [currentChat]);
   
   const handleSaveChatInfo = async () => {
@@ -69,17 +63,20 @@ export default function UserAI({ accessToken }: UserAIProps) {
           name: chatName,
           description: chatDescription,
           language: chatLanguage,
-
         }),
       });
   
       if (!res.ok) throw new Error("Failed to update chat info");
   
-  
       // Update local chatList with new name/description
       setChatList(prev => prev.map(chat =>
-        chat.chat_id === currentChat ? { ...chat, name: chatName, description: chatDescription,language: chatLanguage } : chat
+        chat.chat_id === currentChat ? { ...chat, name: chatName, description: chatDescription, language: chatLanguage } : chat
       ));
+      
+      // Hide sidebar after saving on mobile
+      if (window.innerWidth < 640) {
+        setShowSidebar(false);
+      }
     } catch (err) {
       console.error("Failed to save chat info:", err);
     }
@@ -90,7 +87,6 @@ export default function UserAI({ accessToken }: UserAIProps) {
       if (!accessToken) return
 
       try {
-
         const response = await fetch(`${process.env.NEXT_PUBLIC_BE_API_URL}/users/chat/list/`, {
           method: "GET",
           headers: {
@@ -111,7 +107,6 @@ export default function UserAI({ accessToken }: UserAIProps) {
         }
       } catch (err) {
         console.error("Error fetching chats:", err)
-       
       }
     }
 
@@ -187,146 +182,171 @@ export default function UserAI({ accessToken }: UserAIProps) {
   const handleNewChat = () => {
     setCurrentChat("")
     setMessages([])
+    // Hide sidebar after creating new chat on mobile
+    if (window.innerWidth < 640) {
+      setShowSidebar(false);
+    }
+  }
+
+  const handleSelectChat = (chatId: string) => {
+    setCurrentChat(chatId);
+    // Hide sidebar after selecting chat on mobile
+    if (window.innerWidth < 640) {
+      setShowSidebar(false);
+    }
   }
 
   return (
-    <div className="flex flex-col sm:flex-row h-[calc(100vh-90px)] w-full overflow-hidden">
-      {/* Sidebar */}
-      <aside className="w-full sm:w-64 bg-gray-800 text-white p-4 flex flex-col overflow-y-auto sm:overflow-y-auto">
-      <div className="mb-4">
-      <label className="block text-sm text-white mb-1">Chat Bot Name:</label>
-      <input
-        type="text"
-        placeholder="Chat Name"
-        value={chatName}
-        onChange={(e) => setChatName(e.target.value)}
-        className="w-full bg-gray-700 text-white p-2 rounded mb-2"
-      />
-      <label className="block text-sm text-white mb-1">Project Description:</label>
+    <div className="flex flex-col sm:flex-row h-[calc(100vh-90px)] w-full overflow-hidden rounded-md relative">
+      {/* Mobile Toggle Button */}
+    
 
-      <textarea
-        placeholder="Chat Description"
-        value={chatDescription}
-        onChange={(e) => setChatDescription(e.target.value)}
-        rows={2}
-        className="w-full bg-gray-700 text-white p-2 rounded resize-none mb-2"
-      />
-
-      <label className="block text-sm text-white mb-1">Response Langauge:</label>
+          {/* Sidebar */}
 
 
-      <select
-        value={chatLanguage}
-        onChange={(e) => setChatLanguage(e.target.value)}
-        className="w-full bg-gray-700 text-white p-2 rounded mb-2"
-      >
-        <option value="english">English</option>
-        <option value="hindi">Hindi</option>
-        <option value="gujarati">Gujarati</option>
-        <option value="hinglish">Hinglish</option>
-
-      </select>
-
-      <button
-        onClick={handleSaveChatInfo}
-        className="w-full bg-blue-400 text-[#0f1729] px-4 py-2 rounded-md font-bold hover:bg-blue-500"
-      >
-        Save Chat Info
-      </button>
-</div>
-
-
-        <div className="mb-4">
-          <button
-            onClick={handleNewChat}
-            className="w-full bg-blue-400 text-[#0f1729] px-4 py-2 rounded-md font-bold hover:bg-blue-500"
+      <aside
+            className={`fixed top-0 left-0 z-40 w-64 h-full bg-gray-800 text-white p-4 rounded-md transform transition-transform duration-300 ease-in-out
+              ${showSidebar ? "translate-x-0" : "-translate-x-full"} 
+              sm:translate-x-0 sm:relative sm:top-auto sm:left-auto sm:z-0 sm:w-64 sm:h-auto sm:flex sm:flex-col sm:p-4 sm:bg-gray-800 sm:block`}
           >
-            + New Chat
-          </button>
-        </div>
-        <ul className="space-y-2">
-        {chatList.map((chat, idx) => (
-          <li
-            key={chat.id}
-            onClick={() => setCurrentChat(chat.chat_id)}
-            className={`cursor-pointer px-4 py-2 rounded-md ${currentChat === chat.chat_id ? "bg-gray-700" : "hover:bg-gray-700"}`}
-          >
-      {chat.name ? chat.name : `Chat ${idx + 1}`} — {new Date(chat.created_at).toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      })}
-        </li>
-        ))}
+            {/* Sidebar Form Section */}
+            <div className="mb-4">
+              <label className="block text-sm text-white mb-1">Chat Bot Name:</label>
+              <input
+                type="text"
+                placeholder="Chat Name"
+                value={chatName}
+                onChange={(e) => setChatName(e.target.value)}
+                className="w-full bg-gray-700 text-white p-2 rounded mb-2"
+              />
+              <label className="block text-sm text-white mb-1">Project Description:</label>
+              <textarea
+                placeholder="Chat Description"
+                value={chatDescription}
+                onChange={(e) => setChatDescription(e.target.value)}
+                rows={2}
+                className="w-full bg-gray-700 text-white p-2 rounded resize-none mb-2"
+              />
+              <label className="block text-sm text-white mb-1">Response Language:</label>
+              <select
+                value={chatLanguage}
+                onChange={(e) => setChatLanguage(e.target.value)}
+                className="w-full bg-gray-700 text-white p-2 rounded mb-2"
+              >
+                <option value="english">English</option>
+                <option value="hindi">Hindi</option>
+                <option value="gujarati">Gujarati</option>
+                <option value="hinglish">Hinglish</option>
+              </select>
+              <button
+                onClick={handleSaveChatInfo}
+                className="w-full bg-blue-400 text-[#0f1729] px-4 py-2 rounded-md font-bold hover:bg-blue-500"
+              >
+                Save Chat Info
+              </button>
+            </div>
 
-        </ul>
-        
-      </aside>
+            {/* New Chat Button */}
+            <div className="mb-4">
+              <button
+                onClick={handleNewChat}
+                className="w-full bg-blue-400 text-[#0f1729] px-4 py-2 rounded-md font-bold hover:bg-blue-500"
+              >
+                + New Chat
+              </button>
+            </div>
+
+            {/* Chat List */}
+            <ul className="space-y-2 overflow-y-auto">
+              {chatList.map((chat, idx) => (
+                <li
+                  key={chat.id}
+                  onClick={() => handleSelectChat(chat.chat_id)}
+                  className={`cursor-pointer px-4 py-2 rounded-md ${
+                    currentChat === chat.chat_id ? "bg-gray-700" : "hover:bg-gray-700"
+                  }`}
+                >
+                  {chat.name || `Chat ${idx + 1}`} —{" "}
+                  {new Date(chat.created_at).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </li>
+              ))}
+            </ul>
+            
+          </aside>
+
 
       {/* Main Chat Section */}
       <div className="flex flex-col flex-grow bg-gradient-to-br from-[#0F172A] to-[#1E293B] text-gray-100 overflow-hidden">
-        <div className="flex flex-col h-full px-4 sm:px-6 md:px-8">
-        
-          
+      <button 
+          onClick={() => setShowSidebar(!showSidebar)} 
+          className="sm:hidden fixed  right-3 z-50 bg-gray-700 text-white p-2 rounded-full"
+        >
+          {showSidebar ? "✕" : "☰"}
+        </button>
+        <div className="flex flex-col h-full px-4 sm:px-6 md:px-8 pt-12 sm:pt-0">
+       
           <div
             ref={chatWindowRef}
             className="flex-grow overflow-y-auto p-4 bg-gray-900 rounded-2xl shadow-md"
           >
+                 
             {messages.map((message, index) => (
               <div
                 key={index}
                 className={`mb-3 flex ${message.isUser ? "justify-end" : "justify-start"}`}
               >
-            
                 <div className="max-w-full sm:max-w-2xl lg:max-w-3xl space-y-1">
-                <div
-                  className={`p-3 rounded-lg whitespace-pre-wrap 
-                    ${message.isUser ? "bg-blue-400 text-[#0f1729]" : "bg-gray-700 text-white"}
-                    prose prose-sm dark:prose-invert max-w-none
-                    prose-p:mb-1 prose-li:mb-0.5 prose-pre:my-3 prose-ul:pl-5 prose-code:px-1 leading-snug
-                  `}
-                >
-                  <ReactMarkdown
-                    remarkPlugins={[remarkGfm]}
-                    rehypePlugins={[rehypeHighlight]} // Optional
+                  <div
+                    className={`p-3 rounded-lg whitespace-pre-wrap 
+                      ${message.isUser ? "bg-blue-400 text-[#0f1729]" : "bg-gray-700 text-white"}
+                      prose prose-sm dark:prose-invert max-w-none
+                      prose-p:mb-1 prose-li:mb-0.5 prose-pre:my-3 prose-ul:pl-5 prose-code:px-1 leading-snug
+                    `}
                   >
-                    {message.text}
-                  </ReactMarkdown>
+                    <ReactMarkdown
+                      remarkPlugins={[remarkGfm]}
+                      rehypePlugins={[rehypeHighlight]} // Optional
+                    >
+                      {message.text}
+                    </ReactMarkdown>
+                  </div>
+                  {message.created_at && (
+                    <div className="text-xs text-gray-400 text-right">
+                      {new Date(message.created_at).toLocaleTimeString([], {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                        hour12: true,
+                      })}
+                    </div>
+                  )}
                 </div>
-                {message.created_at && (
-                  <div className="text-xs text-gray-400 text-right">
-                    {new Date(message.created_at).toLocaleTimeString([], {
-                      hour: "2-digit",
-                      minute: "2-digit",
-                      hour12: true,
-                    })}
-              </div>
-            )}
-          </div>
               </div>
             ))}
           </div>
 
-
-
           <form
-            onSubmit={handleSendMessage}
-            className="mt-4 flex items-center gap-2 w-full pb-4 sm:pb-0"
+          onSubmit={handleSendMessage}
+          className="mt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full pb-4 sm:pb-0 px-2"
+        >
+          <input
+            type="text"
+            value={inputMessage}
+            onChange={(e) => setInputMessage(e.target.value)}
+            placeholder="Type your message..."
+            className="flex-grow bg-gray-800 text-white rounded-full px-4 py-3 focus:outline-none"
+          />
+          <button
+            type="submit"
+            className="bg-blue-400 text-[#0f1729] rounded-full px-6 py-3 font-semibold hover:bg-blue-500 transition-colors w-full sm:w-auto"
           >
-            <input
-              type="text"
-              value={inputMessage}
-              onChange={(e) => setInputMessage(e.target.value)}
-              placeholder="Type your message..."
-              className="flex-grow bg-gray-800 text-white rounded-full px-4 py-3 focus:outline-none"
-            />
-            <button
-              type="submit"
-              className="bg-blue-400 text-[#0f1729] rounded-full px-6 py-3 font-semibold hover:bg-blue-500 transition-colors mb-4"
-            >
-              Send
-            </button>
-          </form>
+            Send
+          </button>
+        </form>
+
         </div>
       </div>
     </div>

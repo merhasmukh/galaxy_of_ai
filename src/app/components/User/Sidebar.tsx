@@ -26,7 +26,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
     { icon: LayoutGrid, label: "Dashboard", href: "/user/dashboard" },
     { icon: LibraryBig, label: "Projects", href: "/user/projects" },
 
-    { icon: Brain, label: "AI Research", href: "/user/ai" },
+    { icon: Brain, label: "AI", href: "/user/ai" },
     { icon: FilePenLine, label: "Resouces", href: "/user/resources" },
 
     // { icon: Wallet, label: "Money Management", href: "/user/money-management" },
