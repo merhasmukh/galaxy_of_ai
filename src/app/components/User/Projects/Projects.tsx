@@ -1,139 +1,149 @@
-"use client"
-import React from 'react';
-import { 
-  PlusCircle, 
-  Briefcase,
-  ClipboardList,
-  Calendar,
-  Users,
-  TrendingUp,
-  Clock,
-  CheckCircle2,
-} from 'lucide-react';
+"use client";
 
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { PlusCircle, Trash } from "lucide-react";
 
-function Projects() {
+interface Milestone {
+  id: number;
+  title: string;
+  description: string;
+  status: "planned" | "in-progress" | "completed";
+  due_date: string;
+}
 
-  const recentActivity = [
-    { id: 1, type: 'completed', task: 'API Integration', time: '2 hours ago' },
-    { id: 2, type: 'pending', task: 'Database Migration', time: '5 hours ago' },
-    { id: 3, type: 'completed', task: 'UI Design Review', time: '1 day ago' },
-  ];
+interface ProjectRoadmapProps {
+  accessToken: string;
+}
 
-  const upcomingDeadlines = [
-    { id: 1, project: 'E-commerce Platform', deadline: '2024-03-25', progress: 75 },
-    { id: 2, project: 'Mobile App Development', deadline: '2024-04-01', progress: 45 },
-    { id: 3, project: 'Cloud Migration', deadline: '2024-04-15', progress: 30 },
-  ];
+export default function ProjectRoadmap({ accessToken }: ProjectRoadmapProps) {
+  const [milestones, setMilestones] = useState<Milestone[]>([]);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [dueDate, setDueDate] = useState<string>("");
+
+  const fetchMilestones = async () => {
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_BE_API_URL}/users/milestones/`,{
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+    setMilestones(res.data);
+  };
+
+  const addMilestone = async () => {
+    if (!title || !description || !dueDate) return;
+    await axios.post(`${process.env.NEXT_PUBLIC_BE_API_URL}/users/milestones/`, {
+      title,
+      description,
+      status: "planned",
+      due_date: dueDate,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+    setTitle("");
+    setDescription("");
+    setDueDate("");
+    fetchMilestones();
+  };
+
+  const updateStatus = async (id: number, status: Milestone["status"]) => {
+    await axios.patch(`${process.env.NEXT_PUBLIC_BE_API_URL}/users/milestones/${id}/`, { status },
+    {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    }
+    );
+    fetchMilestones();
+  };
+
+  const deleteMilestone = async (id: number) => {
+    await axios.delete(`${process.env.NEXT_PUBLIC_BE_API_URL}/users/milestones/${id}/`,
+    {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    }
+      
+    );
+    fetchMilestones();
+  };
+
+  useEffect(() => {
+    fetchMilestones();
+  }, []);
 
   return (
-    <div className="flex h-screen bg-gray-900">      
+    <div className="bg-gray-900 min-h-screen p-4">
+      <div className="bg-gray-800 rounded-lg shadow-lg p-6 border border-gray-700 max-w-2xl mx-auto">
+        <h3 className="text-lg font-semibold text-white mb-4">Define Project Roadmap</h3>
 
-    
+        <label className="block text-sm text-white mb-1">Milestone Title</label>
+        <input
+          type="text"
+          placeholder="e.g., Finalize UI Design"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          className="w-full p-2 mb-2 rounded bg-gray-700 text-white"
+        />
 
-        {/* Main Content */}
-        <main className="flex-1 overflow-y-auto bg-gray-900 p-4">
-          {/* Stats Overview */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-            <div className="bg-gray-800 rounded-lg shadow-lg p-6 border border-gray-700">
-              <div className="flex items-center justify-between">
-                <h3 className="text-gray-400 text-sm font-medium">Total Projects</h3>
-                <Briefcase className="w-5 h-5 text-blue-500" />
-              </div>
-              <p className="text-2xl font-bold text-white mt-2">12</p>
-              <p className="text-sm text-green-500 mt-2">↑ 8% from last month</p>
+        <label className="block text-sm text-white mb-1">Description</label>
+        <textarea
+          placeholder="Describe the milestone..."
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          className="w-full p-2 mb-2 rounded bg-gray-700 text-white"
+        />
+
+        <label className="block text-sm text-white mb-1">Due Date</label>
+        <input
+          type="date"
+          value={dueDate}
+          onChange={(e) => setDueDate(e.target.value)}
+          className="w-full p-2 mb-4 rounded bg-gray-700 text-white"
+        />
+
+        <button
+          onClick={addMilestone}
+          className="w-full flex items-center justify-center px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition"
+        >
+          <PlusCircle className="w-5 h-5 mr-2" /> Add Milestone
+        </button>
+      </div>
+
+      <div className="mt-8 max-w-4xl mx-auto space-y-4">
+        {milestones.map((milestone) => (
+          <div
+            key={milestone.id}
+            className="bg-gray-800 p-4 rounded-lg border border-gray-700 shadow flex flex-col md:flex-row md:justify-between md:items-center gap-3"
+          >
+            <div className="flex-1">
+              <h4 className="text-white font-semibold">{milestone.title}</h4>
+              <p className="text-sm text-gray-400">{milestone.description}</p>
+              <p className="text-xs text-gray-500 mt-1">Due: {milestone.due_date}</p>
             </div>
-            <div className="bg-gray-800 rounded-lg shadow-lg p-6 border border-gray-700">
-              <div className="flex items-center justify-between">
-                <h3 className="text-gray-400 text-sm font-medium">Active Tasks</h3>
-                <ClipboardList className="w-5 h-5 text-purple-500" />
-              </div>
-              <p className="text-2xl font-bold text-white mt-2">24</p>
-              <p className="text-sm text-red-500 mt-2">↓ 3% from last week</p>
-            </div>
-            <div className="bg-gray-800 rounded-lg shadow-lg p-6 border border-gray-700">
-              <div className="flex items-center justify-between">
-                <h3 className="text-gray-400 text-sm font-medium">Team Members</h3>
-                <Users className="w-5 h-5 text-green-500" />
-              </div>
-              <p className="text-2xl font-bold text-white mt-2">8</p>
-              <p className="text-sm text-gray-400 mt-2">Active members</p>
-            </div>
-            <div className="bg-gray-800 rounded-lg shadow-lg p-6 border border-gray-700">
-              <div className="flex items-center justify-between">
-                <h3 className="text-gray-400 text-sm font-medium">Completion Rate</h3>
-                <TrendingUp className="w-5 h-5 text-indigo-500" />
-              </div>
-              <p className="text-2xl font-bold text-white mt-2">92%</p>
-              <p className="text-sm text-green-500 mt-2">↑ 12% from last month</p>
+            <div className="flex flex-col md:flex-row md:items-center gap-2">
+              <select
+                value={milestone.status}
+                onChange={(e) => updateStatus(milestone.id, e.target.value as Milestone["status"])}
+                className="bg-gray-700 text-white rounded px-2 py-1"
+              >
+                <option value="planned">Planned</option>
+                <option value="in-progress">In Progress</option>
+                <option value="completed">Completed</option>
+              </select>
+              <button onClick={() => deleteMilestone(milestone.id)} className="text-red-500 hover:text-red-700">
+                <Trash className="w-4 h-4" />
+              </button>
             </div>
           </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Quick Actions */}
-            <div className="bg-gray-800 rounded-lg shadow-lg p-6 border border-gray-700">
-              <h3 className="text-lg font-semibold text-white mb-4">Quick Actions</h3>
-              <div className="space-y-3">
-                <button className="w-full flex items-center justify-center px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition">
-                  <PlusCircle className="w-5 h-5 mr-2" />
-                  New Project
-                </button>
-                <button className="w-full flex items-center justify-center px-4 py-2 bg-purple-600 text-white rounded-lg shadow hover:bg-purple-700 transition">
-                  <ClipboardList className="w-5 h-5 mr-2" />
-                  Create Task
-                </button>
-                <button className="w-full flex items-center justify-center px-4 py-2 bg-green-600 text-white rounded-lg shadow hover:bg-green-700 transition">
-                  <Calendar className="w-5 h-5 mr-2" />
-                  Schedule Meeting
-                </button>
-              </div>
-            </div>
-
-            {/* Recent Activity */}
-            <div className="bg-gray-800 rounded-lg shadow-lg p-6 border border-gray-700">
-              <h3 className="text-lg font-semibold text-white mb-4">Recent Activity</h3>
-              <div className="space-y-4">
-                {recentActivity.map(activity => (
-                  <div key={activity.id} className="flex items-start space-x-3">
-                    {activity.type === 'completed' ? (
-                      <CheckCircle2 className="w-5 h-5 text-green-500 mt-1" />
-                    ) : (
-                      <Clock className="w-5 h-5 text-yellow-500 mt-1" />
-                    )}
-                    <div>
-                      <p className="text-sm font-medium text-white">{activity.task}</p>
-                      <p className="text-xs text-gray-400">{activity.time}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Upcoming Deadlines */}
-            <div className="bg-gray-800 rounded-lg shadow-lg p-6 border border-gray-700">
-              <h3 className="text-lg font-semibold text-white mb-4">Upcoming Deadlines</h3>
-              <div className="space-y-4">
-                {upcomingDeadlines.map(deadline => (
-                  <div key={deadline.id} className="space-y-2">
-                    <div className="flex justify-between items-center">
-                      <p className="text-sm font-medium text-white">{deadline.project}</p>
-                      <p className="text-xs text-gray-400">{deadline.deadline}</p>
-                    </div>
-                    <div className="w-full bg-gray-700 rounded-full h-2">
-                      <div 
-                        className="bg-blue-600 h-2 rounded-full" 
-                        style={{ width: `${deadline.progress}%` }}
-                      ></div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </main>
-   
+        ))}
+      </div>
     </div>
   );
 }
 
-export default Projects;

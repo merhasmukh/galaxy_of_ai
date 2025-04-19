@@ -2,6 +2,7 @@
 import React from "react";
 import {
   LayoutGrid,
+  LibraryBig,
   FilePenLine,
   Brain,
   LogOut,
@@ -23,6 +24,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
 
   const navItems = [
     { icon: LayoutGrid, label: "Dashboard", href: "/user/dashboard" },
+    { icon: LibraryBig, label: "Projects", href: "/user/projects" },
+
     { icon: Brain, label: "AI Research", href: "/user/ai" },
     { icon: FilePenLine, label: "Resouces", href: "/user/resources" },
 
